@@ -1,0 +1,176 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="at.kropf.curriculumvitae.WorkActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imgWork"
+            android:layout_width="@dimen/main_icon_large_size"
+            android:layout_height="@dimen/main_icon_large_size"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/icon_work"
+            android:transitionName="@string/work" />
+
+        <TextView
+            style="@style/MainScreenFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="@string/work_head"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/lineView"
+        android:layout_width="1dp"
+        android:layout_height="240dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout3"
+        android:layout_marginLeft="140dp"
+        android:layout_marginStart="83dp"
+        android:background="#494646" />
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_marginTop="22dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout3">
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/WorkText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="20dp"
+            android:text="Juli-November" />
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/WorkText"
+            android:layout_alignLeft="@+id/textView"
+            android:layout_alignStart="@+id/textView"
+            android:layout_below="@+id/textView"
+            android:layout_marginTop="5dp"
+            android:text="2012"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_alignTop="@+id/textView2"
+            android:layout_toEndOf="@+id/textView"
+            android:layout_toRightOf="@+id/textView"
+            android:src="@drawable/icon_akaryon" />
+
+        <TextView
+            android:id="@+id/textView3"
+            style="@style/WorkText"
+            android:fontFamily="sans-serif-light"
+            android:layout_alignBottom="@+id/textView"
+            android:layout_alignEnd="@+id/textView4"
+            android:layout_alignRight="@+id/textView4"
+            android:text="akaryon GmbH"
+            android:textSize="23sp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/WorkText"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="17dp"
+            android:text="Ferialpraktikum/Teilzeit" />
+
+        <TextView
+            android:id="@+id/textView5"
+            style="@style/WorkText"
+            android:layout_width="150dp"
+            android:gravity="right"
+            android:text="PHP Entwicklung mit CodeIgniter"
+            android:layout_below="@+id/textView2"
+            android:layout_alignRight="@+id/textView4"
+            android:layout_alignEnd="@+id/textView4"
+            android:layout_marginTop="4dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl1"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/WorkText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:text="2013-2015"
+            android:textSize="16sp"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_below="@+id/textView8"
+            android:layout_marginLeft="15dp"
+            android:layout_toEndOf="@+id/textView6"
+            android:layout_toRightOf="@+id/textView6"
+            android:src="@drawable/icon_nekom" />
+
+        <TextView
+            android:id="@+id/textView8"
+            style="@style/WorkText"
+            android:layout_alignBottom="@+id/textView6"
+            android:layout_alignEnd="@+id/textView9"
+            android:layout_alignRight="@+id/textView9"
+            android:text="Nekom GmbH"
+            android:fontFamily="sans-serif-light"
+            android:textSize="23sp" />
+
+        <TextView
+            android:id="@+id/textView9"
+            style="@style/WorkText"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/imageView2"
+            android:layout_marginRight="17dp"
+            android:layout_marginTop="5dp"
+            android:text="Android Entwicklung" />
+
+        <TextView
+            android:id="@+id/textView10"
+            style="@style/WorkText"
+            android:layout_below="@+id/textView9"
+            android:layout_alignRight="@+id/textView9"
+            android:layout_alignEnd="@+id/textView9"
+            android:layout_marginTop="4dp"
+            android:text="Web Entwicklung" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

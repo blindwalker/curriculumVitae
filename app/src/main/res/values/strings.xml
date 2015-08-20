@@ -12,4 +12,6 @@
     <string name="call">Call</string>
     <string name="email">E-Mail</string>
     <string name="linked_in">LinkedIn</string>
+    <string name="title_activity_work">WorkActivity</string>
+    <string name="work_head">Berufserfahrung</string>
 </resources>

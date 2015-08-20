@@ -58,6 +58,7 @@
             android:layout_width="@dimen/main_icon_small_size"
             android:layout_height="@dimen/main_icon_small_size"
             android:id="@+id/imgWork"
+            android:transitionName="@string/work"
             android:src="@drawable/icon_work"/>
     </LinearLayout>
 

@@ -3,8 +3,8 @@
     <!-- the theme applied to the application or activity -->
     <style name="AppTheme"
         parent="@style/Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimaryDark">#00695C</item>
-        <item name="colorPrimary">#009688</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
         <item name="homeAsUpIndicator">@drawable/icon_menu</item>
         <item name="android:homeAsUpIndicator">@drawable/icon_menu</item>
         <!-- Support library compatibility -->
@@ -16,7 +16,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">#000000</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:fontFamily">sans-serif-thin</item>
         <item name="android:layout_centerHorizontal">true</item>
     </style>
@@ -27,5 +27,12 @@
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textColorHint">#42ffffff</item>
         <item name="bs_dividerColor">#b2dfdb</item>
+    </style>
+
+    <!-- Work Screen -->
+    <style name="WorkText" parent="MainScreenFont">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+
     </style>
 </resources>

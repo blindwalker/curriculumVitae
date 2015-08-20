@@ -1,5 +1,6 @@
 package at.kropf.curriculumvitae;
 
+import android.app.ActivityOptions;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.cocosw.bottomsheet.BottomSheet;
 import com.special.ResideMenu.ResideMenu;
@@ -24,9 +26,18 @@ public class MainActivity extends AppCompatActivity {
     private static final String PHONE = "069910522304";
 
     private MainActivity mContext;
+
+    //Navigation Drawer
     private ResideMenu resideMenu;
     private ResideMenuItem itemHome;
     private ResideMenuItem itemLogout;
+
+    //Icons
+    private ImageView imgContact;
+    private ImageView imgWork;
+    private ImageView imgEdu;
+    private ImageView imgSkills;
+    private ImageView imgAbout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +53,32 @@ public class MainActivity extends AppCompatActivity {
 
         setUpMenu();
 
-        findViewById(R.id.imgContact).setOnClickListener(new View.OnClickListener() {
+        setupLayout();
+
+    }
+
+    private void setupLayout() {
+
+        imgWork = (ImageView) findViewById(R.id.imgWork);
+        imgContact = (ImageView) findViewById(R.id.imgContact);
+        imgEdu = (ImageView) findViewById(R.id.imgEdu);
+        imgAbout = (ImageView) findViewById(R.id.imgAbout);
+        imgSkills = (ImageView) findViewById(R.id.imgSkills);
+
+        imgWork.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, WorkActivity.class);
+
+                View sharedView = imgWork;
+                String transitionName = getString(R.string.work);
+
+                ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, sharedView, transitionName);
+                startActivity(i, transitionActivityOptions.toBundle());
+            }
+        });
+
+        imgContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new BottomSheet.Builder(MainActivity.this, R.style.BottomSheet_StyleDialog).sheet(R.menu.list).listener(new DialogInterface.OnClickListener() {
@@ -70,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         // attach to current activity;
         resideMenu = new ResideMenu(this);
         //resideMenu.setUse3D(true);
-        resideMenu.setBackground(R.drawable.profile_pic);
+        resideMenu.setBackground(R.drawable.drawer_bg);
         resideMenu.attachToActivity(this);
         resideMenu.setMenuListener(menuListener);
         //valid scale factor is between 0.0f and 1.0f. leftmenu'width is 150dip.
