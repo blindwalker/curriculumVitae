@@ -20,7 +20,7 @@
         android:id="@+id/imgAvatar"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/avatar" />
+        android:src="@drawable/profile_pic" />
 
     <TextView
         android:text="@string/contact"
