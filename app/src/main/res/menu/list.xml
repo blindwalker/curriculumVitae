@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/share" android:title="@string/call" android:icon="@drawable/icon_phone"/>
+    <item android:id="@+id/upload" android:title="@string/email" android:icon="@drawable/icon_gmail"/>
+    <item android:id="@+id/call" android:title="@string/linked_in" android:icon="@drawable/icon_linkedin"/>
+</menu>
