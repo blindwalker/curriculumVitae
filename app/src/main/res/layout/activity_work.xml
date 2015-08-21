@@ -6,7 +6,7 @@
     tools:context="at.kropf.curriculumvitae.WorkActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/headWrapper"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"

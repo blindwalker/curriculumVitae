@@ -11,6 +11,7 @@
     <TextView
         android:text="@string/name"
         android:textSize="24sp"
+        android:fontFamily="sans-serif-light"
         style="@style/MainScreenFont"
         android:layout_marginTop="16dp" />
 
@@ -83,6 +84,7 @@
             android:layout_width="@dimen/main_icon_small_size"
             android:layout_height="@dimen/main_icon_small_size"
             android:id="@+id/imgEdu"
+            android:transitionName="@string/edu"
             android:src="@drawable/icon_edu" />
     </LinearLayout>
 
@@ -126,6 +128,7 @@
             android:layout_height="@dimen/main_icon_small_size"
             android:id="@+id/imgSkills"
             android:layout_gravity="center"
+            android:transitionName="@string/skills"
             android:src="@drawable/icon_skills" />
         <TextView
             android:text="@string/skills"

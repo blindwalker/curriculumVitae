@@ -1,0 +1,228 @@
+<com.nirhart.parallaxscroll.views.ParallaxScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:parallax_factor="1.9"
+    tools:context="at.kropf.curriculumvitae.WorkActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgEdu"
+                android:layout_width="@dimen/main_icon_large_size"
+                android:layout_height="@dimen/main_icon_large_size"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/icon_edu"
+                android:transitionName="@string/edu" />
+
+            <TextView
+                style="@style/MainScreenFont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:text="@string/edu"
+                android:textColor="#ffffff"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:background="#ffffff"
+            android:layout_marginBottom="25dp"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/lineView"
+                android:layout_width="1dp"
+                android:layout_height="340dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="140dp"
+                android:layout_marginStart="83dp"
+                android:background="#494646" />
+
+            <RelativeLayout
+                android:id="@+id/rl1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp">
+
+                <TextView
+                    android:id="@+id/textView"
+                    style="@style/WorkText"
+                    android:layout_width="75dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="29dp"
+                    android:layout_marginTop="20dp"
+                    android:text="2005-2009"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    style="@style/WorkText"
+                    android:layout_alignBottom="@+id/textView"
+                    android:layout_alignEnd="@+id/textView4"
+                    android:layout_alignRight="@+id/textView4"
+                    android:fontFamily="sans-serif-light"
+                    android:text="BORG-Jennersdorf"
+                    android:textSize="23sp" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    style="@style/WorkText"
+                    android:layout_width="150dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/textView3"
+                    android:layout_marginEnd="17dp"
+                    android:layout_marginRight="17dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Matura mit vertiefendem Schwerpunkt Informatik" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_below="@+id/textView"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/textView"
+                    android:layout_toRightOf="@+id/textView"
+                    android:src="@drawable/icon_borg" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl1"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/textView6"
+                    style="@style/WorkText"
+                    android:layout_width="75dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="25dp"
+                    android:text="2010"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_below="@+id/textView6"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginStart="38dp"
+                    android:layout_toEndOf="@+id/textView6"
+                    android:layout_toRightOf="@+id/textView6"
+                    android:src="@drawable/icon_zivi" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    style="@style/WorkText"
+                    android:layout_alignBottom="@+id/textView6"
+                    android:layout_alignEnd="@+id/textView9"
+                    android:layout_alignRight="@+id/textView9"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Zivildienst"
+                    android:textSize="23sp" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    style="@style/WorkText"
+                    android:layout_width="150dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/imageView2"
+                    android:layout_marginRight="17dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="right"
+                    android:text="Österr. Rotes Kreuz Güssing" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl2"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/textView6"
+                    style="@style/WorkText"
+                    android:layout_width="75dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="25dp"
+                    android:text="2010-2013"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_below="@+id/textView6"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginStart="38dp"
+                    android:layout_toEndOf="@+id/textView6"
+                    android:layout_toRightOf="@+id/textView6"
+                    android:src="@drawable/icon_fh" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    style="@style/WorkText"
+                    android:layout_alignBottom="@+id/textView6"
+                    android:layout_alignEnd="@+id/textView9"
+                    android:layout_alignRight="@+id/textView9"
+                    android:fontFamily="sans-serif-light"
+                    android:text="FH Joanneum"
+                    android:textSize="23sp" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    style="@style/WorkText"
+                    android:layout_width="150dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/imageView2"
+                    android:layout_marginRight="17dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="right"
+                    android:text="Bachelorstudium Internettechnik" />
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</com.nirhart.parallaxscroll.views.ParallaxScrollView>

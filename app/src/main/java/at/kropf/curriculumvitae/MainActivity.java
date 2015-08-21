@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -24,8 +25,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private static final String PHONE = "069910522304";
-
-    private MainActivity mContext;
 
     //Navigation Drawer
     private ResideMenu resideMenu;
@@ -49,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.icon_menu);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        mContext = this;
-
         setUpMenu();
 
         setupLayout();
@@ -70,11 +67,50 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, WorkActivity.class);
 
-                View sharedView = imgWork;
-                String transitionName = getString(R.string.work);
+                // Check if we're running on Android 5.0 or higher
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    View sharedView = imgWork;
+                    String transitionName = getString(R.string.work);
 
-                ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, sharedView, transitionName);
-                startActivity(i, transitionActivityOptions.toBundle());
+                    ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, sharedView, transitionName);
+                    startActivity(i, transitionActivityOptions.toBundle());
+                } else {
+                    startActivity(i);
+                }
+            }
+        });
+
+        imgSkills.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, SkillsActivity.class);
+
+                // Check if we're running on Android 5.0 or higher
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    View sharedView = imgSkills;
+                    String transitionName = getString(R.string.skills);
+                    ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, sharedView, transitionName);
+                    startActivity(i, transitionActivityOptions.toBundle());
+                } else {
+                    startActivity(i);
+                }
+            }
+        });
+
+        imgEdu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, EduActivity.class);
+
+                // Check if we're running on Android 5.0 or higher
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    View sharedView = imgEdu;
+                    String transitionName = getString(R.string.edu);
+                    ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, sharedView, transitionName);
+                    startActivity(i, transitionActivityOptions.toBundle());
+                } else {
+                    startActivity(i);
+                }
             }
         });
 
@@ -108,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
         //resideMenu.setUse3D(true);
         resideMenu.setBackground(R.drawable.drawer_bg);
         resideMenu.attachToActivity(this);
-        resideMenu.setMenuListener(menuListener);
         //valid scale factor is between 0.0f and 1.0f. leftmenu'width is 150dip.
         resideMenu.setScaleValue(0.6f);
 
@@ -134,18 +169,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean dispatchTouchEvent(@NonNull MotionEvent ev) {
         return resideMenu.dispatchTouchEvent(ev);
     }
-
-    private ResideMenu.OnMenuListener menuListener = new ResideMenu.OnMenuListener() {
-        @Override
-        public void openMenu() {
-            //Toast.makeText(mContext, "Menu is opened!", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void closeMenu() {
-            //Toast.makeText(mContext, "Menu is closed!", Toast.LENGTH_SHORT).show();
-        }
-    };
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
