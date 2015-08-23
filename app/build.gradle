@@ -10,7 +10,11 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+
+        resValue "string", "initialIP", "https://curriculumvitaemkropf.herokuapp.com/"
+
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -21,11 +25,13 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.2.1'
+
+    compile 'com.android.support:appcompat-v7:22.1.0'
     compile 'com.cocosw:bottomsheet:1.+@aar'
-    compile 'com.specyci:residemenu:1.6+'
+    compile 'com.specyci:residemenu:1.6'
     compile 'com.github.nirhart:parallaxscroll:1.0'
     compile 'com.android.support:cardview-v7:23.0.0'
     compile 'com.android.support:recyclerview-v7:23.0.0'
-
+    compile 'com.mcxiaoke.volley:library:1.0.18'
+    compile 'com.google.android.gms:play-services:7.8.0'
 }

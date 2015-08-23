@@ -14,4 +14,7 @@
     <string name="linked_in">LinkedIn</string>
     <string name="title_activity_work">WorkActivity</string>
     <string name="work_head">Berufserfahrung</string>
+
+    <!-- WS Routes -->
+    <string name="doLogin">login</string>
 </resources>
