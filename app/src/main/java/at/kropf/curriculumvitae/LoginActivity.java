@@ -17,7 +17,10 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,7 +38,8 @@ public class LoginActivity extends Activity {
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-    private UserLoginTask mAuthTask = null;
+    private UserLoginTaskFirst mAuthTaskFirst = null;
+    private UserLoginTaskSecond mAuthTask = null;
 
     // UI references.
     private AutoCompleteTextView mEmailView;
@@ -81,7 +85,7 @@ public class LoginActivity extends Activity {
      * errors are presented and no actual login attempt is made.
      */
     public void attemptLogin() {
-        if (mAuthTask != null) {
+        if (mAuthTaskFirst != null) {
             return;
         }
 
@@ -122,8 +126,8 @@ public class LoginActivity extends Activity {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
+            mAuthTaskFirst = new UserLoginTaskFirst(email);
+            mAuthTaskFirst.execute((Void) null);
         }
     }
 
@@ -176,12 +180,75 @@ public class LoginActivity extends Activity {
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+    public class UserLoginTaskFirst extends AsyncTask<Void, Void, Boolean> {
+
+        private final String mEmail;
+
+        UserLoginTaskFirst(String email) {
+            mEmail = email;
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+
+            WSUser wsUser = new WSUser(LoginActivity.this, new ResponseListener() {
+                @Override
+                public void onComplete(JSONObject json) {
+                    Log.d("RESPONSE", json.toString());
+                    Session session = Session.readSessionFirst(json);
+                    if (session != null) {
+                        CurriculumVitaeApplication.getInstance().getPreferenceHandler().setName(session.getUser().getName());
+                        CurriculumVitaeApplication.getInstance().getPreferenceHandler().setUserName(session.getUser().getUsername());
+                        CurriculumVitaeApplication.getInstance().getPreferenceHandler().setUserImage(session.getUser().getImage());
+
+                        findViewById(R.id.profile_image).setVisibility(View.VISIBLE);
+                        Picasso.with(LoginActivity.this).load(session.getUser().getImage()).noFade().into((ImageView) findViewById(R.id.profile_image));
+                        mPasswordView.setVisibility(View.VISIBLE);
+
+                    }
+                }
+
+                @Override
+                public void onError(Throwable error) {
+                    Log.e("RESPONSE", error.toString());
+
+                }
+            });
+
+            try {
+                wsUser.doLoginFirst(mEmail);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(final Boolean success) {
+            mAuthTaskFirst = null;
+            showProgress(false);
+        }
+
+        @Override
+        protected void onCancelled() {
+            mAuthTaskFirst = null;
+            showProgress(false);
+        }
+    }
+
+    /**
+     * Represents an asynchronous login/registration task used to authenticate
+     * the user.
+     */
+    public class UserLoginTaskSecond extends AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;
         private final String mPassword;
+        private final Session mSessionFirst;
 
-        UserLoginTask(String email, String password) {
+        UserLoginTaskSecond(Session sessionFirst, String email, String password) {
+            mSessionFirst = sessionFirst;
             mEmail = email;
             mPassword = password;
         }
@@ -193,7 +260,7 @@ public class LoginActivity extends Activity {
                 @Override
                 public void onComplete(JSONObject json) {
                     Log.d("RESPONSE", json.toString());
-                    Session session = Session.readSession(json);
+                    Session session = Session.readSessionSecond(mSessionFirst, json);
                     if (session != null) {
                         CurriculumVitaeApplication.getInstance().getPreferenceHandler().setSessionToken(session.getToken());
                         CurriculumVitaeApplication.getInstance().getPreferenceHandler().setSessionExpires(session.getExpires());
@@ -212,7 +279,7 @@ public class LoginActivity extends Activity {
             });
 
             try {
-                wsUser.doLogin(mEmail, mPassword);
+                wsUser.doLoginSecond(mEmail, mPassword);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -222,7 +289,7 @@ public class LoginActivity extends Activity {
 
         @Override
         protected void onPostExecute(final Boolean success) {
-            mAuthTask = null;
+            mAuthTaskFirst = null;
             showProgress(false);
 
             if (success) {
@@ -235,7 +302,7 @@ public class LoginActivity extends Activity {
 
         @Override
         protected void onCancelled() {
-            mAuthTask = null;
+            mAuthTaskFirst = null;
             showProgress(false);
         }
     }

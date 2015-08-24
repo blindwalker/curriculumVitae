@@ -11,15 +11,15 @@ public class User {
 
     private String username;
     private String name;
-
+    private String image;
 
     //JSON parsing
     public static User readUser(JSONObject response) throws JSONException {
 
         User user = new User();
-        user.setUsername(response.getJSONObject("user").getString("username"));
-        user.setName(response.getJSONObject("user").getString("name"));
-
+        user.setUsername(response.getString("username"));
+        user.setName(response.getString("firstname"));
+        user.setImage(response.getString("img"));
         return user;
     }
 
@@ -33,6 +33,9 @@ public class User {
         this.name = name;
     }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     //GETTER
     public String getUsername() {
@@ -41,5 +44,9 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public String getImage() {
+        return image;
     }
 }

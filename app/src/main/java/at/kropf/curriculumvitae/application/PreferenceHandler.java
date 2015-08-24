@@ -15,6 +15,7 @@ public class PreferenceHandler {
     private static String SESSION_TOKEN = "session_token";
     private static String SESSION_EXPIRATION = "session_expires";
     private static String NAME = "name";
+    private static String USER_IMAGE = "userimage";
 
 
     private SharedPreferences globalPublicPreferences;
@@ -55,6 +56,15 @@ public class PreferenceHandler {
     public String getName() {
         return getGlobalPublicPreferences().getString(NAME, "");
     }
+
+    public void setUserImage(String userImage) {
+        getGlobalPublicPreferences().edit().putString(USER_IMAGE, userImage).commit();
+    }
+
+    public String getUserImage() {
+        return getGlobalPublicPreferences().getString(USER_IMAGE, "");
+    }
+
 
     private SharedPreferences getGlobalPublicPreferences() {
         if (globalPublicPreferences == null) {

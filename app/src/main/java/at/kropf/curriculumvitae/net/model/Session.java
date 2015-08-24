@@ -12,20 +12,34 @@ public class Session {
     private int expires;
     private User user;
 
+    public Session(User user) {
+        this.user = user;
+    }
+
     public Session(String token, int expires, User user) {
         this.token = token;
         this.expires = expires;
         this.user = user;
     }
 
-    public static Session readSession(JSONObject response) {
+    public static Session readSessionFirst(JSONObject response) {
         try {
             User user = User.readUser(response);
             Session session = new Session(
-                    response.getString("token"),
-                    response.getInt("expires"),
                     user
             );
+
+            return session;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static Session readSessionSecond(Session session, JSONObject response) {
+        try {
+            session.setToken(response.getString("token"));
+            session.setExpires(response.getInt("expires"));
 
             return session;
         } catch (JSONException e) {
@@ -44,5 +58,18 @@ public class Session {
 
     public User getUser() {
         return user;
+    }
+
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public void setExpires(int expires) {
+        this.expires = expires;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

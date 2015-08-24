@@ -19,7 +19,17 @@ public class WSUser extends BaseRequestData {
         this.context = context;
     }
 
-    public void doLogin(String email, String password) throws JSONException {
+    public void doLoginFirst(String email) throws JSONException {
+
+        UserRequestObject user = new UserRequestObject();
+        user.setUsername(email);
+
+        performCall(context.getResources().getString(R.string.initialIP) + context.getString(R.string.doLogin), user.toJSONString());
+
+
+    }
+
+    public void doLoginSecond(String email, String password) throws JSONException {
 
         UserRequestObject user = new UserRequestObject();
         user.setUsername(email);

@@ -28,7 +28,18 @@
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/profile_pic"
+                app:border_width="2dp"
+                android:visibility="invisible"
+                app:border_color="#FF000000"/>
 
             <AutoCompleteTextView
                 android:id="@+id/email"
@@ -49,6 +60,7 @@
                 android:imeOptions="actionUnspecified"
                 android:inputType="textPassword"
                 android:maxLines="1"
+                android:visibility="gone"
                 android:singleLine="true" />
 
             <Button
