@@ -3,7 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="contact">Kontakt</string>
+    <string name="contact">Contact</string>
     <string name="work">Work</string>
     <string name="edu">Education</string>
     <string name="about">About this App</string>
@@ -17,4 +17,32 @@
 
     <!-- WS Routes -->
     <string name="doLogin">login</string>
+    <string name="hello">Hello </string>
+    <string name="next">Next</string>
+    <string name="differentAccount"><u>Log in with different account</u></string>
+    <string name="noAccount"><u>No Account yet? Contact me</u></string>
+    <string name="sendMail">Send email...</string>
+    <string name="doLogin2">login2</string>
+    <string name="invalidUserError">This User was not found</string>
+    <string name="noConnection">The server connection timed out</string>
+    <string name="login">Login</string>
+    <string name="fh_course_name">Bachelor degree programme Internet Technology</string>
+    <string name="fh">FH Joanneum</string>
+    <string name="year_fh">2010-2013</string>
+    <string name="red_cross">Red Cross Güssing</string>
+    <string name="comm_service">Community Service</string>
+    <string name="year_comm_service">2010</string>
+    <string name="matriculation">A-Levels - Main area: Informatics</string>
+    <string name="borg">BORG-Jennersdorf</string>
+    <string name="year_borg">2005-2009</string>
+    <string name="month_akaryon">July-November</string>
+    <string name="akaryon_1">Internship/Part-Time</string>
+    <string name="akaryon_2">PHP Development using CodeIgniter</string>
+    <string name="year_akaryon">2012</string>
+    <string name="akaryon">akaryon GmbH</string>
+    <string name="year_nekom">2013-2015</string>
+    <string name="nekom">Nekom GmbH</string>
+    <string name="nekom_1">Android Development</string>
+    <string name="nekom_2">Web Development</string>
+    <string name="skill_android">2013 begann ich mit der Tätigkeit als Android-Entwickler bei der Firma Nekom. Für unsere, großteils internen, Apps war in erster Linie die Kommunikation zwischen App und Java Server von Bedeutung.</string>
 </resources>

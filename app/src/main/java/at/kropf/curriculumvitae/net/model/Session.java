@@ -36,10 +36,15 @@ public class Session {
         }
     }
 
-    public static Session readSessionSecond(Session session, JSONObject response) {
+    public static Session readSessionSecond(JSONObject response) {
         try {
-            session.setToken(response.getString("token"));
-            session.setExpires(response.getInt("expires"));
+            User user = User.readUser(response.getJSONObject("user"));
+
+            Session session = new Session(
+                    response.getString("token"),
+                    response.getInt("expires")/1000,
+                    user
+            );
 
             return session;
         } catch (JSONException e) {

@@ -35,7 +35,7 @@ public class WSUser extends BaseRequestData {
         user.setUsername(email);
         user.setPassword(password);
 
-        performCall(context.getResources().getString(R.string.initialIP) + context.getString(R.string.doLogin), user.toJSONString());
+        performCall(context.getResources().getString(R.string.initialIP) + context.getString(R.string.doLogin2), user.toJSONString());
 
 
     }

@@ -36,4 +36,21 @@ public class CurriculumVitaeApplication extends Application {
     }
 
 
+    public boolean isLoggedIn(){
+        if(getPreferenceHandler().getSessionToken().length()==0){
+            return false;
+
+        }else if(getPreferenceHandler().getName().length()==0){
+            return false;
+
+        }else if(getPreferenceHandler().getUserName().length()==0){
+            return false;
+
+        }else if(getPreferenceHandler().getSessionExpires()==0){
+            return false;
+
+        }
+        return true;
+    }
+
 }

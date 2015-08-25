@@ -24,8 +24,6 @@
                 android:id="@+id/imgEdu"
                 android:layout_width="@dimen/main_icon_large_size"
                 android:layout_height="@dimen/main_icon_large_size"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:src="@drawable/icon_edu"
                 android:transitionName="@string/edu" />
@@ -65,14 +63,14 @@
                 <TextView
                     android:id="@+id/textView"
                     style="@style/WorkText"
-                    android:layout_width="75dp"
+                    android:layout_width="90dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="20dp"
                     android:layout_marginStart="29dp"
                     android:layout_marginTop="20dp"
-                    android:text="2005-2009"
+                    android:text="@string/year_borg"
                     android:textSize="16sp" />
 
                 <TextView
@@ -82,7 +80,7 @@
                     android:layout_alignEnd="@+id/textView4"
                     android:layout_alignRight="@+id/textView4"
                     android:fontFamily="sans-serif-light"
-                    android:text="BORG-Jennersdorf"
+                    android:text="@string/borg"
                     android:textSize="23sp" />
 
                 <TextView
@@ -92,17 +90,17 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_below="@+id/textView3"
-                    android:layout_marginEnd="17dp"
-                    android:layout_marginRight="17dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
                     android:layout_marginTop="5dp"
-                    android:text="Matura mit vertiefendem Schwerpunkt Informatik" />
+                    android:text="@string/matriculation"
+                    android:gravity="end" />
 
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:layout_below="@+id/textView"
-                    android:layout_marginLeft="13dp"
                     android:layout_marginTop="5dp"
                     android:layout_toEndOf="@+id/textView"
                     android:layout_toRightOf="@+id/textView"
@@ -114,18 +112,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rl1"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:visibility="visible">
 
                 <TextView
                     android:id="@+id/textView6"
                     style="@style/WorkText"
-                    android:layout_width="75dp"
+                    android:layout_width="90dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_marginLeft="20dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="25dp"
-                    android:text="2010"
+                    android:text="@string/year_comm_service"
                     android:textSize="16sp"
                     android:visibility="visible" />
 
@@ -134,8 +133,6 @@
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:layout_below="@+id/textView6"
-                    android:layout_marginLeft="13dp"
-                    android:layout_marginStart="38dp"
                     android:layout_toEndOf="@+id/textView6"
                     android:layout_toRightOf="@+id/textView6"
                     android:src="@drawable/icon_zivi" />
@@ -147,7 +144,7 @@
                     android:layout_alignEnd="@+id/textView9"
                     android:layout_alignRight="@+id/textView9"
                     android:fontFamily="sans-serif-light"
-                    android:text="Zivildienst"
+                    android:text="@string/comm_service"
                     android:textSize="23sp" />
 
                 <TextView
@@ -157,10 +154,11 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignTop="@+id/imageView2"
-                    android:layout_marginRight="17dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginEnd="12dp"
                     android:layout_marginTop="5dp"
-                    android:gravity="right"
-                    android:text="Österr. Rotes Kreuz Güssing" />
+                    android:gravity="end"
+                    android:text="@string/red_cross" />
 
 
             </RelativeLayout>
@@ -173,50 +171,49 @@
                 android:layout_marginTop="20dp">
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/textView16"
                     style="@style/WorkText"
-                    android:layout_width="75dp"
+                    android:layout_width="90dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_marginLeft="20dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="25dp"
-                    android:text="2010-2013"
+                    android:text="@string/year_fh"
                     android:textSize="16sp"
                     android:visibility="visible" />
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/imageView12"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
-                    android:layout_below="@+id/textView6"
-                    android:layout_marginLeft="13dp"
-                    android:layout_marginStart="38dp"
-                    android:layout_toEndOf="@+id/textView6"
-                    android:layout_toRightOf="@+id/textView6"
+                    android:layout_below="@+id/textView16"
+                    android:layout_toEndOf="@+id/textView16"
+                    android:layout_toRightOf="@+id/textView16"
                     android:src="@drawable/icon_fh" />
 
                 <TextView
-                    android:id="@+id/textView8"
+                    android:id="@+id/textView18"
                     style="@style/WorkText"
-                    android:layout_alignBottom="@+id/textView6"
-                    android:layout_alignEnd="@+id/textView9"
-                    android:layout_alignRight="@+id/textView9"
+                    android:layout_alignBottom="@+id/textView16"
+                    android:layout_alignEnd="@+id/textView19"
+                    android:layout_alignRight="@+id/textView19"
                     android:fontFamily="sans-serif-light"
-                    android:text="FH Joanneum"
+                    android:text="@string/fh"
                     android:textSize="23sp" />
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/textView19"
                     style="@style/WorkText"
                     android:layout_width="150dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_alignTop="@+id/imageView2"
-                    android:layout_marginRight="17dp"
+                    android:layout_alignTop="@+id/imageView12"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginEnd="12dp"
                     android:layout_marginTop="5dp"
-                    android:gravity="right"
-                    android:text="Bachelorstudium Internettechnik" />
+                    android:gravity="end"
+                    android:text="@string/fh_course_name" />
 
 
             </RelativeLayout>

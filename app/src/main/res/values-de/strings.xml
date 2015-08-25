@@ -6,4 +6,24 @@
     <string name="about">Über diese App</string>
     <string name="skills">Kenntnisse</string>
     <string name="call">Anrufen</string>
+    <string name="hello">Guten Tag </string>
+    <string name="next">Weiter</string>
+    <string name="differentAccount"><u>Mit anderem Konto anmelden</u></string>
+    <string name="noAccount">Noch kein Konto? Kontaktieren Sie mich</string>
+    <string name="prompt_password">Passwort</string>
+    <string name="sendMail">Email senden...</string>
+    <string name="invalidUserError">Der Benutzer wurde nicht gefunden</string>
+    <string name="noConnection">Es konnte keine Verbindung zum Server hergestellt werden</string>
+    <string name="login">Anmelden</string>
+    <string name="fh_course_name">Bachelorstudium Internettechnik</string>
+    <string name="red_cross">Österr. Rotes Kreuz Güssing</string>
+    <string name="comm_service">Zivildienst</string>
+    <string name="matriculation">Matura mit vertiefendem Schwerpunkt Informatik</string>
+    <string name="month_akaryon">Juli-November</string>
+    <string name="akaryon_1">Ferialpraktikum/Teilzeit</string>
+    <string name="akaryon_2">PHP Entwicklung mit CodeIgniter</string>
+    <string name="nekom_1">Android Entwicklung</string>
+    <string name="nekom_2">Web Entwicklung</string>
+    <string name="skill_android">2013 begann ich mit der Tätigkeit als Android-Entwickler bei der Firma Nekom. Für die, großteils internen, Handy- und Tablet-Apps war in erster Linie die Kommunikation zwischen App und Java Server von Bedeutung. Dafür setzten wir Serverseitig auf REST Schnittstellen und verwendeten JSON als Datenformat. Auf Seiten der App wurde primär auf Google Volley als HTTP-Library gesetzt.</string>
+
 </resources>
