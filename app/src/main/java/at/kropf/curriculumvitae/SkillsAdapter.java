@@ -56,4 +56,5 @@ public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.ContactVie
             vTitle = (TextView) v.findViewById(R.id.cardTitle);
         }
     }
+    
 }
