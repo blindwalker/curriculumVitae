@@ -76,12 +76,15 @@
                 <TextView
                     android:id="@+id/textView3"
                     style="@style/WorkText"
-                    android:layout_alignBottom="@+id/textView"
                     android:layout_alignEnd="@+id/textView4"
                     android:layout_alignRight="@+id/textView4"
                     android:fontFamily="sans-serif-light"
                     android:text="@string/borg"
-                    android:textSize="23sp" />
+                    android:gravity="right"
+                    android:layout_height="wrap_content"
+                    android:lines="2"
+                    android:textSize="23sp"
+                    android:layout_alignTop="@+id/textView" />
 
                 <TextView
                     android:id="@+id/textView4"

@@ -53,4 +53,13 @@ public class CurriculumVitaeApplication extends Application {
         return true;
     }
 
+    public void logoutUser() {
+        getPreferenceHandler().setSessionToken("");
+        getPreferenceHandler().setUserName("");
+        getPreferenceHandler().setSessionExpires(0);
+        getPreferenceHandler().setName("");
+        getPreferenceHandler().setUserImage("");
+
+    }
+
 }

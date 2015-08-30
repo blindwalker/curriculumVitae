@@ -1,23 +1,27 @@
 package at.kropf.curriculumvitae;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 
-import java.util.ArrayList;
-import java.util.List;
+import at.kropf.curriculumvitae.fragment.AndroidSkillFragment;
+import at.kropf.curriculumvitae.fragment.InterestsFragment;
+import at.kropf.curriculumvitae.fragment.OtherSkillFragment;
 
 public class SkillsActivity extends AppCompatActivity {
 
-    private int[] images = {R.drawable.android_header, R.drawable.php_header, R.drawable.sketch_header, R.drawable.sketch_header};
-    private String[] titles = {"Android", "PHP", "Sketch", "Git"};
-    private int[] contents = {R.string.skill_android, R.string.skill_android, R.string.skill_android, R.string.skill_android};
+    PagerAdapter mFragmentAdapter;
+    ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_skills);
+
 
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -25,30 +29,55 @@ public class SkillsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setElevation(0);
 
-        RecyclerView recList = (RecyclerView) findViewById(R.id.cardList);
-        recList.setHasFixedSize(true);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        recList.setLayoutManager(llm);
+        mFragmentAdapter = new PagerAdapter(getSupportFragmentManager(), this);
 
-        SkillsAdapter ca = new SkillsAdapter(createList(4));
-        recList.setAdapter(ca);
+        mViewPager = (ViewPager) findViewById(R.id.vpPager);
+        mViewPager.setAdapter(mFragmentAdapter);
     }
 
-    private List<Skill> createList(int size) {
+    public static class PagerAdapter extends FragmentPagerAdapter {
+        private static int NUM_ITEMS = 3;
+        private static Context mContext;
 
-        List<Skill> result = new ArrayList<Skill>();
-        for (int i = 0; i < size; i++) {
-
-            Skill skill = new Skill();
-            skill.skillImage = getResources().getDrawable(images[i]);
-            skill.skillName = titles[i];
-            skill.skillText = getResources().getString(contents[i]);
-
-            result.add(skill);
-
+        public PagerAdapter(FragmentManager fragmentManager, Context context) {
+            super(fragmentManager);
+            mContext = context;
         }
 
-        return result;
+        // Returns total number of pages
+        @Override
+        public int getCount() {
+            return NUM_ITEMS;
+        }
+
+        // Returns the fragment to display for that page
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0: // Fragment # 0 - This will show FirstFragment
+                    return AndroidSkillFragment.newInstance();
+                case 1: // Fragment # 0 - This will show FirstFragment different title
+                    return OtherSkillFragment.newInstance();
+                case 2: // Fragment # 0 - This will show FirstFragment different title
+                    return InterestsFragment.newInstance();
+                default:
+                    return null;
+            }
+        }
+
+        // Returns the page title for the top indicator
+        @Override
+        public CharSequence getPageTitle(int position) {
+            switch (position) {
+                case 0:
+                    return mContext.getResources().getString(R.string.androidSkills);
+                case 1:
+                    return mContext.getResources().getString(R.string.otherSkills);
+                case 2:
+                    return mContext.getResources().getString(R.string.interests);
+                default:
+                    return "";
+            }
+        }
     }
 }

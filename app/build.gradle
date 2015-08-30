@@ -4,6 +4,10 @@ android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
 
+    dexOptions {
+        preDexLibraries = false
+    }
+
     defaultConfig {
         applicationId "at.kropf.curriculumvitae"
         minSdkVersion 16
@@ -12,6 +16,7 @@ android {
         versionName "1.0"
 
         resValue "string", "initialIP", "https://curriculumvitaemkropf.herokuapp.com/"
+        multiDexEnabled true
 
     }
 
@@ -25,10 +30,8 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-
     compile 'com.android.support:appcompat-v7:22.1.0'
     compile 'com.cocosw:bottomsheet:1.+@aar'
-    compile 'com.specyci:residemenu:1.6'
     compile 'com.github.nirhart:parallaxscroll:1.0'
     compile 'com.android.support:cardview-v7:23.0.0'
     compile 'com.android.support:recyclerview-v7:23.0.0'
@@ -40,4 +43,5 @@ dependencies {
         // exclusion is not necessary, but generally a good idea.
         exclude group: 'com.google.android', module: 'support-v4'
     }
+    compile project(':ResideMenu')
 }

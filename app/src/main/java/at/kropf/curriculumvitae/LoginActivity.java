@@ -278,6 +278,8 @@ public class LoginActivity extends Activity {
                 public void onComplete(JSONObject json) {
                     Log.d("RESPONSE", json.toString());
                     Session session = Session.readSessionFirst(json);
+                    showProgress(false);
+
                     if (session != null) {
                         mProfileView.setVisibility(View.VISIBLE);
                         Picasso.with(LoginActivity.this).load(session.getUser().getImage()).noFade().into(mProfileView);
@@ -288,6 +290,7 @@ public class LoginActivity extends Activity {
                         differentAccount.setVisibility(View.VISIBLE);
                         noAccount.setVisibility(View.GONE);
                     }
+
                 }
 
                 @Override
@@ -300,6 +303,7 @@ public class LoginActivity extends Activity {
 
                     }
                     resetViewsToInit();
+                    showProgress(false);
 
                 }
             });
@@ -308,6 +312,8 @@ public class LoginActivity extends Activity {
                 wsUser.doLoginFirst(mEmail);
             } catch (JSONException e) {
                 e.printStackTrace();
+                showProgress(false);
+
             }
 
             return true;
@@ -316,7 +322,6 @@ public class LoginActivity extends Activity {
         @Override
         protected void onPostExecute(final Boolean success) {
             mAuthTaskFirst = null;
-            showProgress(false);
         }
 
         @Override
@@ -356,6 +361,8 @@ public class LoginActivity extends Activity {
                         CurriculumVitaeApplication.getInstance().getPreferenceHandler().setUserImage(session.getUser().getImage());
 
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        finish();
+
                     }
                 }
 
@@ -385,9 +392,7 @@ public class LoginActivity extends Activity {
             mAuthTaskFirst = null;
             showProgress(false);
 
-            if (success) {
-                finish();
-            } else {
+            if (!success) {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
             }

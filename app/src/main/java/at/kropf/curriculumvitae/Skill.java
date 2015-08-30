@@ -7,8 +7,8 @@ import android.graphics.drawable.Drawable;
  */
 public class Skill {
 
-    protected String skillName;
-    protected String skillText;
-    protected Drawable skillImage;
+    public String skillName;
+    public String skillText;
+    public Drawable skillImage;
 
 }

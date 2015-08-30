@@ -33,7 +33,7 @@
     <string name="comm_service">Community Service</string>
     <string name="year_comm_service">2010</string>
     <string name="matriculation">A-Levels - Main area: Informatics</string>
-    <string name="borg">BORG-Jennersdorf</string>
+    <string name="borg">BORG-\nJennersdorf</string>
     <string name="year_borg">2005-2009</string>
     <string name="month_akaryon">July-November</string>
     <string name="akaryon_1">Internship/Part-Time</string>
@@ -44,5 +44,17 @@
     <string name="nekom">Nekom GmbH</string>
     <string name="nekom_1">Android Development</string>
     <string name="nekom_2">Web Development</string>
-    <string name="skill_android">2013 begann ich mit der Tätigkeit als Android-Entwickler bei der Firma Nekom. Für unsere, großteils internen, Apps war in erster Linie die Kommunikation zwischen App und Java Server von Bedeutung.</string>
+    <string name="skill_android">Nach meinem Praktikum als PHP Entwickler begann ich im Jahr 2013 mit der Tätigkeit als Android-Entwickler bei der Firma Nekom. Dort setzten wir großteils interne Projekte und Showcases für den E-Commerce Bereich um.</string>
+    <string name="skill_android_rest">Für die Kommunikation zwischen App und Server verwendete ich vorzugsweise das Google Volley Framework. In Verbindung mit der GSON Library können so schnell und einfach JSON Basierte REST Schnittstellen angesprochen werden.</string>
+    <string name="skill_android_ble">Im Zuge eines Showcases konnte ich auch Erfahrung im Location Based Marketing sammeln. Hierbei verwendeten wir den Bluetooth 4.0 Standard in Verbindung mit Beacons.</string>
+    <string name="skill_android_security">Da bei den erstellten Anwendungen auch verschiedene Payment Service Provider angebunden wurden, lag auch ein besonderes Augenmerk auf dem Aufbau einer sicheren Verbindung.</string>
+    <string name="skill_php">Während meiner Anstellung bei der Firma akaryon GmbH konnte arbeitete ich an mehreren PHP Projekten, von denen ich auch einige selbstständig Betreute. Dabei wurde das Framework CodeIgniter in Verbindung mit MySQL Datenbanken verwendet. Im Zuge des Praktikums, welches später in eine Geringfügige Anstellung während meines Studiums überging, konnte ich auch Erfahrung in der Frontend Entwicklung mit HTML/CSS und Javascript sammeln.</string>
+    <string name="skill_sketch"><![CDATA[Da mein Interesse bei App-Projekten auch sehr dem UI und UX Design gilt, begann ich mich für die Erstellung von Icons und anderen Grafiken zu begeistern. Als Tool wählte ich hierzu <u>Sketch</u>, da es mir die Möglichkeit gibt, schnell einzelne Elemente aber auch Mockups und Designs für Apps zu erstellen.]]></string>
+    <string name="skill_git">Seit etwa einem Jahr benutze ich Git als Versionsverwaltung meiner Wahl. Grund dafür war zunächste eine Umstellung innerhalb des Unternehmens, besonders die Performance und die Art des Branching und Merging waren ausschlaggebende Punkte auch bei privaten Projekten umzusteigen.</string>
+    <string name="androidSkills">Android</string>
+    <string name="otherSkills">Anderes</string>
+    <string name="interest_unity">In meiner Freizeit versuche ich mich an der Spiele-Entwicklung mit Unity. Gerade die graphische Komponente begeistert mich hier sehr, auch wenn ich leider mit keinem großen künstlerischen Talent gesegnet bin.</string>
+    <string name="interest_ios">Auch die Entwicklung für Apple Geräte findet spätestens seit der Vorstellung von Swift meine Beachtung. Anhand einiger Tutorials habe ich mich bereits an kleineren Apps versucht.</string>
+    <string name="interest_raspberry">Als zentrales Thema meiner Bachelorarbeit erforschte ich die Möglichkeit, aus dem Raspberry ein funktionsfähiges Tablet zu bauen und es zu vermarkten. Mittlerweile kümmert sich der kleine Bastelrechner in Verbindung mit einer Pumpe, einem Server und einer App um die Bewässerung unserer Pflanzen am Balkon.</string>
+    <string name="interests">Interessen</string>
 </resources>

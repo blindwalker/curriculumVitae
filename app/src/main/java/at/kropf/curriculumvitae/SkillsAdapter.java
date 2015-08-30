@@ -31,7 +31,12 @@ public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.ContactVie
         Skill skill = contactList.get(i);
         contactViewHolder.vContent.setText(skill.skillText);
         contactViewHolder.vTitle.setText(skill.skillName);
-        contactViewHolder.vImage.setImageDrawable(skill.skillImage);
+        if (skill.skillImage == null) {
+            contactViewHolder.vImage.setVisibility(View.GONE);
+        } else {
+            contactViewHolder.vImage.setImageDrawable(skill.skillImage);
+
+        }
     }
 
     @Override

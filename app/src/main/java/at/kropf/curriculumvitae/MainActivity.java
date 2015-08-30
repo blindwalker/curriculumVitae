@@ -22,13 +22,14 @@ import com.special.ResideMenu.ResideMenuItem;
 
 import java.util.List;
 
+import at.kropf.curriculumvitae.application.CurriculumVitaeApplication;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String PHONE = "069910522304";
 
     //Navigation Drawer
     private ResideMenu resideMenu;
-    private ResideMenuItem itemHome;
     private ResideMenuItem itemLogout;
 
     //Icons
@@ -148,10 +149,18 @@ public class MainActivity extends AppCompatActivity {
         resideMenu.setScaleValue(0.6f);
 
         // create menu items;
-        itemHome = new ResideMenuItem(this, R.drawable.icon_phone, "Home");
-        itemLogout = new ResideMenuItem(this, R.drawable.icon_mail, "Logout");
+        itemLogout = new ResideMenuItem(this, "Logout");
 
-        resideMenu.addMenuItem(itemHome, ResideMenu.DIRECTION_LEFT);
+        itemLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CurriculumVitaeApplication.getInstance().logoutUser();
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                finish();
+
+            }
+        });
+
         resideMenu.addMenuItem(itemLogout, ResideMenu.DIRECTION_LEFT);
 
         resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
