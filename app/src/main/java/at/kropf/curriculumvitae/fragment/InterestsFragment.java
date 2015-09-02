@@ -16,24 +16,16 @@ import at.kropf.curriculumvitae.Skill;
 import at.kropf.curriculumvitae.SkillsAdapter;
 
 /**
- * Created by martinkropf on 28.08.15.
+ * Fragment which is displayed in viewpager
  */
 public class InterestsFragment extends Fragment {
 
-
-    private int[] images = {0, 0, 0};
-    private String[] titles = {"Unity", "iOS", "Raspberry Pi"};
-    private int[] contents = {R.string.interest_unity, R.string.interest_ios, R.string.interest_raspberry};
+    private final String[] titles = {"Unity", "iOS", "Raspberry Pi"};
+    private final int[] contents = {R.string.interest_unity, R.string.interest_ios, R.string.interest_raspberry};
 
     // newInstance constructor for creating fragment with arguments
     public static InterestsFragment newInstance() {
         return new InterestsFragment();
-    }
-
-    // Store instance variables based on arguments passed
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -41,25 +33,26 @@ public class InterestsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_android_skills, container, false);
 
+        //Create recyclerView and add it to layout
         RecyclerView recList = (RecyclerView) v.findViewById(R.id.cardList);
         recList.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
 
-        SkillsAdapter ca = new SkillsAdapter(createList(images.length));
+        SkillsAdapter ca = new SkillsAdapter(createList(titles.length));
         recList.setAdapter(ca);
 
         return v;
     }
 
+    //create skill from array
     private List<Skill> createList(int size) {
 
-        List<Skill> result = new ArrayList<Skill>();
+        List<Skill> result = new ArrayList<>();
         for (int i = 0; i < size; i++) {
 
             Skill skill = new Skill();
-            skill.skillImage = null;
             skill.skillName = titles[i];
             skill.skillText = getResources().getString(contents[i]);
 

@@ -25,15 +25,15 @@ public class User {
 
 
     //SETTER
-    public void setUsername(String username) {
+    private void setUsername(String username) {
         this.username = username;
     }
 
-    public void setName(String name) {
+    private void setName(String name) {
         this.name = name;
     }
 
-    public void setImage(String image) {
+    private void setImage(String image) {
         this.image = image;
     }
 

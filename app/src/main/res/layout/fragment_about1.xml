@@ -19,7 +19,8 @@
             android:src="@drawable/app_icon_large"
             android:layout_marginTop="21dp"
             android:layout_gravity="center_horizontal"
-            android:baselineAlignBottom="false" />
+            android:baselineAlignBottom="false"
+            android:contentDescription="@string/about"/>
 
         <TextView
             style="@style/MainScreenFont"

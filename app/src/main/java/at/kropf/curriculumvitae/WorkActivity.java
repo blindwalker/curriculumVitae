@@ -3,6 +3,9 @@ package at.kropf.curriculumvitae;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+/*
+ * Activity for displaying the work layout
+ */
 public class WorkActivity extends AppCompatActivity {
 
     @Override

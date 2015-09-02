@@ -166,8 +166,7 @@ public abstract class AbstractArchitectCamActivity extends AppCompatActivity imp
 	protected abstract CameraPosition getCameraPosition();
 
 	private int getFeatures() {
-		int features = (hasGeo() ? StartupConfiguration.Features.Geo : 0) | (hasIR() ? StartupConfiguration.Features.Tracking2D : 0);
-		return features;
+		return (hasGeo() ? StartupConfiguration.Features.Geo : 0) | (hasIR() ? StartupConfiguration.Features.Tracking2D : 0);
 	}
 
 	protected abstract boolean hasGeo();

@@ -18,7 +18,8 @@
             android:id="@+id/imageView3"
             android:src="@drawable/icon_design"
             android:layout_marginTop="21dp"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/design"/>
 
         <TextView
             style="@style/MainScreenFont"

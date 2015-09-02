@@ -26,21 +26,21 @@ import java.util.List;
 import at.kropf.curriculumvitae.application.CurriculumVitaeApplication;
 import at.kropf.curriculumvitae.augmented.SampleCamActivity;
 
+/*
+ * Home Screen Activity
+ * Holds all the main navigation points as well as the navigation drawer
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String PHONE = "069910522304";
 
     //Navigation Drawer
     private ResideMenu resideMenu;
-    private ResideMenuItem itemLogout;
 
-    //Icons
-    private ImageView imgContact;
     private ImageView imgWork;
     private ImageView imgEdu;
     private ImageView imgSkills;
-    private ImageView imgAbout;
-    private ImageView imgMe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,14 +58,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /*
+     *  Create view references and set click listeners
+     */
     private void setupLayout() {
 
         imgWork = (ImageView) findViewById(R.id.imgWork);
-        imgContact = (ImageView) findViewById(R.id.imgContact);
+        ImageView imgContact = (ImageView) findViewById(R.id.imgContact);
         imgEdu = (ImageView) findViewById(R.id.imgEdu);
-        imgAbout = (ImageView) findViewById(R.id.imgAbout);
+        ImageView imgAbout = (ImageView) findViewById(R.id.imgAbout);
         imgSkills = (ImageView) findViewById(R.id.imgSkills);
-        imgMe = (ImageView) findViewById(R.id.imgAvatar);
+        ImageView imgMe = (ImageView) findViewById(R.id.imgAvatar);
 
         imgWork.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,18 +170,19 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /*
+     *  Setup navigation drawer
+     */
     private void setUpMenu() {
 
         // attach to current activity;
         resideMenu = new ResideMenu(this);
-        //resideMenu.setUse3D(true);
         resideMenu.setBackground(R.drawable.drawer_bg);
         resideMenu.attachToActivity(this);
-        //valid scale factor is between 0.0f and 1.0f. leftmenu'width is 150dip.
         resideMenu.setScaleValue(0.6f);
 
         // create menu items;
-        itemLogout = new ResideMenuItem(this, "Logout");
+        ResideMenuItem itemLogout = new ResideMenuItem(this, getString(R.string.Logout));
 
         itemLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -190,8 +194,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //add menu items
         resideMenu.addMenuItem(itemLogout, ResideMenu.DIRECTION_LEFT);
 
+        //disable swipe from right
         resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
 
         findViewById(R.id.imgAvatar).setOnClickListener(new View.OnClickListener() {
@@ -224,18 +230,21 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    //start intent for calling
     private void call() {
         Intent callIntent = new Intent(Intent.ACTION_CALL);
         callIntent.setData(Uri.parse("tel:" + PHONE));
         startActivity(callIntent);
     }
 
+    //start intent for email
     private void mail() {
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
                 "mailto", "martinkropf08@gmail.com", null));
         startActivity(Intent.createChooser(emailIntent, "Send email..."));
     }
 
+    //start intent with linkedin url
     private void linkedIn() {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("linkedin://profile/AAMAABjjhdYBxFepxIjsYPBTDoeiSYRQ6HoLvEA"));
         final PackageManager packageManager = getPackageManager();

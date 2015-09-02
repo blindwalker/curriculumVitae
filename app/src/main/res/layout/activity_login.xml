@@ -67,7 +67,7 @@
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:background="@drawable/input_bg"
-                    android:paddingLeft="15dp"
+                    android:paddingLeft="@dimen/layout_side_margin"
                     android:paddingTop="10dp"
                     android:paddingBottom="20dp"
                     android:layout_marginTop="45dp"
@@ -94,7 +94,7 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right">
+                android:layout_gravity="end">
 
                 <Button
                     android:layout_width="wrap_content"
@@ -107,7 +107,7 @@
                     android:background="@android:color/transparent"
                     android:layout_marginTop="16dp"
                     android:textSize="16sp"
-                    android:layout_gravity="left" />
+                    android:layout_gravity="start" />
 
                 <Button
                     android:id="@+id/email_sign_in_button"
@@ -120,7 +120,7 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:visibility="gone"
-                    android:layout_gravity="right"
+                    android:layout_gravity="end"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
@@ -139,7 +139,7 @@
                 android:text="@string/next"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_gravity="right" />
+                android:layout_gravity="end" />
 
             <TextView
                 android:layout_width="fill_parent"

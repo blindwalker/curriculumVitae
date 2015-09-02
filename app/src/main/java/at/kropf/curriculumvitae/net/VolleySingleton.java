@@ -7,7 +7,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
 /**
- * Created by martinkropf on 23.08.15.
+ * VolleySingleton holds instance of RequestQueue
  */
 public class VolleySingleton {
 
@@ -27,7 +27,7 @@ public class VolleySingleton {
         return mInstance;
     }
 
-    public RequestQueue getRequestQueue() {
+    private RequestQueue getRequestQueue() {
         if (mRequestQueue == null) {
             // getApplicationContext() is key, it keeps you from leaking the
             // Activity or BroadcastReceiver if someone passes one in.

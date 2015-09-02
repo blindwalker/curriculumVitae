@@ -3,7 +3,8 @@ package at.kropf.curriculumvitae.application;
 import android.app.Application;
 
 /**
- * Created by martinkropf on 23.08.15.
+ * Application Class holding single instance for PreferenceHandler
+ * Also contains user-state check and logout method
  */
 public class CurriculumVitaeApplication extends Application {
 
@@ -35,7 +36,7 @@ public class CurriculumVitaeApplication extends Application {
         return preferenceHandler;
     }
 
-
+    //checks for filled values in Preference handler to see if user is logged in
     public boolean isLoggedIn(){
         if(getPreferenceHandler().getSessionToken().length()==0){
             return false;
@@ -53,6 +54,7 @@ public class CurriculumVitaeApplication extends Application {
         return true;
     }
 
+    //remove all user values from PreferenceHandler
     public void logoutUser() {
         getPreferenceHandler().setSessionToken("");
         getPreferenceHandler().setUserName("");

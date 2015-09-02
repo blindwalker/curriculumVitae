@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">CurriculumVitae</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
     <string name="contact">Contact</string>
     <string name="work">Work</string>
     <string name="edu">Education</string>
@@ -12,7 +9,6 @@
     <string name="call">Call</string>
     <string name="email">E-Mail</string>
     <string name="linked_in">LinkedIn</string>
-    <string name="title_activity_work">WorkActivity</string>
     <string name="work_head">Employments</string>
 
     <!-- WS Routes -->
@@ -21,26 +17,26 @@
     <string name="next">Next</string>
     <string name="differentAccount">Back</string>
     <string name="noAccount"><u>No Account yet? Contact me</u></string>
-    <string name="sendMail">Send email...</string>
+    <string name="sendMail">Send email&#8230;&#8230;&#8230;</string>
     <string name="doLogin2">login2</string>
     <string name="invalidUserError">This User was not found</string>
     <string name="noConnection">The server connection timed out</string>
     <string name="login">Login</string>
     <string name="fh_course_name">Bachelor degree programme Internet Technology</string>
     <string name="fh">FH Joanneum</string>
-    <string name="year_fh">2010-2013</string>
+    <string name="year_fh">2010&#8211;2013</string>
     <string name="red_cross">Red Cross Güssing</string>
     <string name="comm_service">Community\nService</string>
     <string name="year_comm_service">2010</string>
     <string name="matriculation">A-Levels\nMain area: Informatics</string>
     <string name="borg">BORG-\nJennersdorf</string>
-    <string name="year_borg">2005-2009</string>
+    <string name="year_borg">2005&#8211;2009</string>
     <string name="month_akaryon">July-November</string>
     <string name="akaryon_1">Internship/Part-Time</string>
     <string name="akaryon_2">PHP Development using CodeIgniter</string>
     <string name="year_akaryon">2012</string>
     <string name="akaryon">akaryon GmbH</string>
-    <string name="year_nekom">2013-2015</string>
+    <string name="year_nekom">2013&#8211;2015</string>
     <string name="nekom">Nekom GmbH</string>
     <string name="nekom_1">Android Development</string>
     <string name="nekom_2">Web Development</string>
@@ -49,33 +45,30 @@
     <string name="skill_android_ble">In the course of implementing a location based marketing showcase, I was able to gain experience using Bluetooth Low Energy and Beacons.</string>
     <string name="skill_android_security">Since we were working with external payment providers in our apps, security was always an important part.</string>
     <string name="skill_php">During my internship at akaryon GmbH, I was maintaining several smaller PHP projects. After my internship, I continued working part-time while continuing my studies. In this period I was part of a team which was working on a larger PHP project, using CodeIgniter and MySQL and also implemented several other frontend Projects.</string>
-    <string name="skill_sketch">Da mein Interesse bei App-Projekten auch sehr dem UI und UX Design gilt, begann ich mich für die Erstellung von Icons und anderen Grafiken zu begeistern. Als Tool wählte ich hierzu <u>Sketch</u>, da es mir die Möglichkeit gibt, schnell einzelne Elemente aber auch Mockups und Designs für Apps zu erstellen.</string>
-    <string name="skill_git">Seit etwa einem Jahr benutze ich Git als Versionsverwaltung meiner Wahl. Grund dafür war zunächste eine Umstellung innerhalb des Unternehmens, besonders die Performance und die Art des Branching und Merging waren ausschlaggebende Punkte auch bei privaten Projekten umzusteigen.</string>
+    <string name="skill_sketch">I have always been interested in UI and UX Design, therefore I started creating icons and other graphics myself. I decided to use Sketch for these tasks because of it\'s simplicity and ability to create whole designs and mockups in short time.</string>
+    <string name="skill_git">Since we migrated from SVN to GIT in my previous company, I started using it for my private projects as well. Especially the performance and the convenient way of branching and merging influenced this decision.</string>
     <string name="androidSkills">Android</string>
     <string name="otherSkills">Others</string>
-    <string name="interest_unity">In meiner Freizeit versuche ich mich an der Spiele-Entwicklung mit Unity. Gerade die graphische Komponente begeistert mich hier sehr, auch wenn ich leider mit keinem großen künstlerischen Talent gesegnet bin.</string>
-    <string name="interest_ios">Auch die Entwicklung für Apple Geräte findet spätestens seit der Vorstellung von Swift meine Beachtung. Anhand einiger Tutorials habe ich mich bereits an kleineren Apps versucht.</string>
-    <string name="interest_raspberry">Als zentrales Thema meiner Bachelorarbeit erforschte ich die Möglichkeit, aus dem Raspberry ein funktionsfähiges Tablet zu bauen und es zu vermarkten. Mittlerweile kümmert sich der kleine Bastelrechner in Verbindung mit einer Pumpe, einem Server und einer App um die Bewässerung unserer Pflanzen am Balkon.</string>
+    <string name="interest_unity">Some time ago, I started developing games using the Unity-Engine. Especially the interface creation caught my attention, even though I\'m not that much of a talented designer.</string>
+    <string name="interest_ios">Ever since Apple released Swift as their alternative to Objective-C for iOS development, I started trying out some tutorials for small apps.</string>
+    <string name="interest_raspberry">As a central part of my bachelor thesis, I was looking into the possibilities of building and selling a working tablet, based on the Raspberry Pi. After some other small projects, the little computer is currently taking care of watering my plants on the balcony.</string>
     <string name="interests">Interests</string>
-    <string name="title_activity_ar">ARActivity</string>
     <string name="invalidPinError">This Pin is not correct</string>
     <string name="noPinError">Please enter your pin</string>
-    <string name="title_activity_about">AboutActivity</string>
 
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="about_content">Auf den folgenden Seiten werden  die einzelnen Funktionen dieser App genauer vorgestellt.</string>
-    <string name="about_content2">Für den Login wurde ein NodeJS Server mit MongoDB aufgesetzt. Der Server stellt eine REST Schnittstelle bereit.</string>
+    <string name="about_content">On the following pages the features of this app will explained in detail.</string>
+    <string name="about_content2">A NodeJS Server communicating with a Mongo Database takes provides a REST API. This is used for the initial login process.</string>
     <string name="server">Server</string>
-    <string name="about_content3">Zur Übertragung der Daten zwischen Server und App wird JSON verwendet. Das Google Volley Framework kümmert sich um den Aufruf der REST Schnittstelle am Server.</string>
+    <string name="about_content3">JSON is used as protocol for the server-app communication. The Google Volley framework takes care of all the requests and responses from and to the server\'s REST API. </string>
     <string name="communication">Communication</string>
-    <string name="about_content4">Alle Icons, Grafiken und Screens wurden mit Sketch erstellt und entworfen. Weiters wurde Zeplin verwendet, um aus den Screens Stylesheets zu erstellen, aus denen wiederum Farben und Abmessungen einfach entnommen werden können.</string>
-    <string name="about_content5">Für den Augmented Reality Bereich wurde Wikitude verwendet. Da es sich um eine kostenlose Lizenz handelt wird das „Trial“ Wasserzeichen über das Bild gelegt.</string>
+    <string name="about_content4">All icons, graphics and screens were created using Sketch. For creating stylesheets out of these screens I used Zeplin. These stylesheets include all the measurements and color-codes which speeds up the actual development process.</string>
+    <string name="about_content5">The Wikitude library was used for the Augmented-Reality area. Since I used a free license, the "Trial" watermark is displayed over the actual image.</string>
     <string name="design">Design</string>
-    <string name="compass_accuracy_low">Please re-calibrate compass by waving your device in a figure 8 motion.</string>
     <string name="aboutMe">About me</string>
     <string name="prompt_username">Username</string>
     <string name="augmented">Augmented Reality</string>
-    <string name="ar_hint">Scannen Sie das dafür vorgesehene Bild in der E-Mail.</string>
+    <string name="ar_hint">Please scan the image attached in your E-Mail.</string>
+    <string name="error_field_required">Please enter your Username</string>
+    <string name="Logout">Logout</string>
 
 </resources>

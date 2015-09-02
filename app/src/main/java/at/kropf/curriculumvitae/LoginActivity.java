@@ -37,19 +37,16 @@ import de.keyboardsurfer.android.widget.crouton.Style;
 import me.philio.pinentry.PinEntryView;
 
 /**
- * A login screen that offers login via email/password.
+ * A login screen that offers login via username/pin.
  */
 public class LoginActivity extends Activity {
 
-    /**
-     * Keep track of the login task to ensure we can cancel it if requested.
-     */
     private UserLoginTaskFirst mAuthTaskFirst = null;
     private UserLoginTaskSecond mAuthTaskSecond = null;
 
     // UI references.
-    private EditText mEmailView;
-    private PinEntryView mPasswordView;
+    private EditText mUsernameView;
+    private PinEntryView mPinView;
     private View mProgressView;
     private View mLoginFormView;
     private TextView txtHello;
@@ -64,15 +61,17 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //if the user is already logged in, skip this screen and go to main-screen
         if(CurriculumVitaeApplication.getInstance().isLoggedIn()){
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             finish();
         }
 
         // Set up the login form.
-        mEmailView = (EditText) findViewById(R.id.email);
+        mUsernameView = (EditText) findViewById(R.id.email);
 
-        mEmailView.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+        // Set keyboard editor action
+        mUsernameView.setOnEditorActionListener(new EditText.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (event != null && event.getAction() != KeyEvent.ACTION_DOWN) {
@@ -101,6 +100,7 @@ public class LoginActivity extends Activity {
             }
         });
 
+        //start email intent onclick
         noAccount.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,7 +111,7 @@ public class LoginActivity extends Activity {
             }
         });
 
-        mPasswordView = (PinEntryView) findViewById(R.id.password);
+        mPinView = (PinEntryView) findViewById(R.id.password);
 
         mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mCheckUserButton = (Button) findViewById(R.id.check_user_button);
@@ -134,86 +134,77 @@ public class LoginActivity extends Activity {
         mProgressView = findViewById(R.id.login_progress);
     }
 
-    public void attemptUserCheck() {
+    //check for username
+    private void attemptUserCheck() {
         if (mAuthTaskFirst != null) {
             return;
         }
 
 
         // Store values at the time of the login attempt.
-        String email = mEmailView.getText().toString();
+        String username = mUsernameView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
+        // Check for a empty username.
+        if (TextUtils.isEmpty(username)) {
             Crouton.makeText(LoginActivity.this, getString(R.string.error_field_required), Style.ALERT).show();
-            focusView = mEmailView;
+            focusView = mUsernameView;
             cancel = true;
         }
 
         if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
+            // There was an error; don't attempt login and focus the username field
             focusView.requestFocus();
         } else {
             // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
+            // perform the check-user attempt.
             showProgress(true);
             mCheckUserButton.setVisibility(View.GONE);
             mEmailSignInButton.setVisibility(View.VISIBLE);
-            mAuthTaskFirst = new UserLoginTaskFirst(email);
+            mAuthTaskFirst = new UserLoginTaskFirst(username);
             mAuthTaskFirst.execute((Void) null);
         }
     }
 
-    public void attemptLogin() {
+    //check for pin
+    private void attemptLogin() {
         if (mAuthTaskSecond != null) {
             return;
         }
 
         // Store values at the time of the login attempt.
-        String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        String username = mUsernameView.getText().toString();
+        String pin = mPinView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
-        if (TextUtils.isEmpty(password)) {
+        // Check for a empty pin
+        if (TextUtils.isEmpty(pin)) {
             Crouton.makeText(LoginActivity.this, getString(R.string.noPinError), Style.ALERT).show();
-            focusView = mPasswordView;
+            focusView = mPinView;
             cancel = true;
         }
 
         if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
+            // There was an error; don't attempt login and focus the pin field
             focusView.requestFocus();
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTaskSecond = new UserLoginTaskSecond(email, password);
+            mAuthTaskSecond = new UserLoginTaskSecond(username, pin);
             mAuthTaskSecond.execute((Void) null);
         }
-    }
-
-    private boolean isEmailValid(String email) {
-        return email.length() > 2;
-
-    }
-
-    private boolean isPasswordValid(String password) {
-        return password.length() > 3;
     }
 
     /**
      * Shows the progress UI and hides the login form.
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
-    public void showProgress(final boolean show) {
+    private void showProgress(final boolean show) {
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
         // for very easy animations. If available, use these APIs to fade-in
         // the progress spinner.
@@ -246,8 +237,7 @@ public class LoginActivity extends Activity {
     }
 
     /**
-     * Represents an asynchronous login/registration task used to authenticate
-     * the user.
+     * Represents an asynchronous check-user task
      */
     public class UserLoginTaskFirst extends AsyncTask<Void, Void, Boolean> {
 
@@ -263,14 +253,17 @@ public class LoginActivity extends Activity {
             WSUser wsUser = new WSUser(LoginActivity.this, new ResponseListener() {
                 @Override
                 public void onComplete(JSONObject json) {
+
+                    //if the request completed, parse the values from the json response
                     Session session = Session.readSessionFirst(json);
                     showProgress(false);
 
+                    //if parsing worked, build the views and fill the parameters for this user
                     if (session != null) {
                         mProfileView.setVisibility(View.VISIBLE);
                         Picasso.with(LoginActivity.this).load(session.getUser().getImage()).noFade().into(mProfileView);
-                        mPasswordView.setVisibility(View.VISIBLE);
-                        mEmailView.setVisibility(View.GONE);
+                        mPinView.setVisibility(View.VISIBLE);
+                        mUsernameView.setVisibility(View.GONE);
                         txtHello.setVisibility(View.VISIBLE);
                         txtHello.setText(getString(R.string.hello) + " " + session.getUser().getName());
                         differentAccount.setVisibility(View.VISIBLE);
@@ -282,15 +275,17 @@ public class LoginActivity extends Activity {
                 @Override
                 public void onError(Throwable error) {
                     Log.e("RESPONSE", error.toString());
+                    //if request failed, show error to the user
                     if(error instanceof AuthFailureError){
                         Crouton.makeText(LoginActivity.this, getString(R.string.invalidUserError), Style.ALERT).show();
+                    }else if(error instanceof NoConnectionError && error.getMessage().contains("No authentication")){
+                        Crouton.makeText(LoginActivity.this, getString(R.string.invalidUserError), Style.ALERT).show();
+
                     }else if(error instanceof NoConnectionError){
                         Crouton.makeText(LoginActivity.this, getString(R.string.noConnection), Style.ALERT).show();
 
                     }
-                    resetViewsToInit();
-                    showProgress(false);
-
+                    showError();
                 }
             });
 
@@ -298,7 +293,7 @@ public class LoginActivity extends Activity {
                 wsUser.doLoginFirst(mEmail);
             } catch (JSONException e) {
                 e.printStackTrace();
-                showProgress(false);
+                showError();
 
             }
 
@@ -315,11 +310,20 @@ public class LoginActivity extends Activity {
             mAuthTaskFirst = null;
             showProgress(false);
         }
+
+        private void showError(){
+            runOnUiThread(new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    resetViewsToInit();
+                    showProgress(false);
+                }
+            }));
+        }
     }
 
     /**
-     * Represents an asynchronous login/registration task used to authenticate
-     * the user.
+     * Represents an asynchronous login task used to authenticate the user.
      */
     public class UserLoginTaskSecond extends AsyncTask<Void, Void, Boolean> {
 
@@ -337,7 +341,10 @@ public class LoginActivity extends Activity {
             WSUser wsUser = new WSUser(LoginActivity.this, new ResponseListener() {
                 @Override
                 public void onComplete(JSONObject json) {
+                    //if the request succeeded, read the parameters from json
                     Session session = Session.readSessionSecond(json);
+
+                    //if everything worked, store the values in the preference handler and continue to main-screen
                     if (session != null) {
                         CurriculumVitaeApplication.getInstance().getPreferenceHandler().setSessionToken(session.getToken());
                         CurriculumVitaeApplication.getInstance().getPreferenceHandler().setSessionExpires(session.getExpires());
@@ -353,13 +360,18 @@ public class LoginActivity extends Activity {
                 @Override
                 public void onError(Throwable error) {
                     Log.e("RESPONSE", error.toString());
-                    showProgress(false);
                     if(error instanceof AuthFailureError){
                         Crouton.makeText(LoginActivity.this, getString(R.string.invalidPinError), Style.ALERT).show();
+                    }else if(error instanceof NoConnectionError && error.getMessage().contains("No authentication")){
+                        Crouton.makeText(LoginActivity.this, getString(R.string.invalidPinError), Style.ALERT).show();
+
                     } else if(error instanceof NoConnectionError){
                         Crouton.makeText(LoginActivity.this, getString(R.string.noConnection), Style.ALERT).show();
 
                     }
+
+                    showError();
+
                 }
             });
 
@@ -367,7 +379,7 @@ public class LoginActivity extends Activity {
                 wsUser.doLoginSecond(mEmail, mPassword);
             } catch (JSONException e) {
                 e.printStackTrace();
-                showProgress(false);
+                showError();
             }
 
             return true;
@@ -378,7 +390,7 @@ public class LoginActivity extends Activity {
             mAuthTaskSecond = null;
 
             if (!success) {
-                mPasswordView.requestFocus();
+                mPinView.requestFocus();
             }
         }
 
@@ -387,17 +399,27 @@ public class LoginActivity extends Activity {
             mAuthTaskSecond = null;
             showProgress(false);
         }
+
+        private void showError(){
+            runOnUiThread(new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    resetViewsToInit();
+                    showProgress(false);
+                }
+            }));
+        }
     }
 
+    //resets all the views to their initial state
     private void resetViewsToInit(){
         mProfileView.setImageDrawable(getResources().getDrawable(R.drawable.ic_launcher));
-        mPasswordView.setVisibility(View.GONE);
-        mEmailView.setVisibility(View.VISIBLE);
+        mPinView.setVisibility(View.GONE);
+        mUsernameView.setVisibility(View.VISIBLE);
         txtHello.setVisibility(View.GONE);
         txtHello.setText("");
         differentAccount.setVisibility(View.GONE);
         noAccount.setVisibility(View.VISIBLE);
-
         mCheckUserButton.setVisibility(View.VISIBLE);
         mEmailSignInButton.setVisibility(View.GONE);
     }

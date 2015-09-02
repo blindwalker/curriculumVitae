@@ -1,193 +1,195 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
     android:gravity="center_horizontal"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#ffffff"
     tools:context=".MainActivity">
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtHeader"
+            style="@style/MainScreenFont"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/name"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:id="@+id/row1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtHeader"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtHeader"
                 style="@style/MainScreenFont"
-                android:layout_marginTop="16dp"
-                android:fontFamily="sans-serif-light"
-                android:text="@string/name"
-                android:textSize="24sp" />
+                android:layout_marginBottom="4dp"
+                android:text="@string/contact" />
+
+            <ImageView
+                android:id="@+id/imgContact"
+                android:layout_width="@dimen/main_icon_small_size"
+                android:layout_height="@dimen/main_icon_small_size"
+                android:contentDescription="@string/contact"
+                android:src="@drawable/icon_mail" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/row1"
+            android:layout_marginTop="20dp"
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/row1"
-                android:layout_width="match_parent"
+                android:id="@+id/linearLayout"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txtHeader"
-                android:layout_marginTop="24dp"
+                android:layout_weight="0.5"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
                     style="@style/MainScreenFont"
+                    android:layout_width="fill_parent"
                     android:layout_marginBottom="4dp"
-                    android:text="@string/contact" />
+                    android:gravity="center"
+                    android:text="@string/work" />
 
                 <ImageView
-                    android:id="@+id/imgContact"
+                    android:id="@+id/imgWork"
                     android:layout_width="@dimen/main_icon_small_size"
                     android:layout_height="@dimen/main_icon_small_size"
-                    android:src="@drawable/icon_mail" />
+                    android:layout_marginBottom="15dp"
+                    android:contentDescription="@string/work"
+                    android:src="@drawable/icon_work"
+                    android:transitionName="@string/work" />
+
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/row2"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/row1"
-                android:layout_marginTop="20dp"
-                android:baselineAligned="false"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/linearLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
+                <ImageView
+                    android:id="@+id/imgAvatar"
+                    android:layout_width="@dimen/main_profile_size"
+                    android:layout_height="@dimen/main_profile_size"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:contentDescription="@string/aboutMe"
+                    android:src="@drawable/profile_pic" />
+
+                <TextView
+                    style="@style/MainScreenFont"
+                    android:layout_width="fill_parent"
+                    android:layout_marginBottom="4dp"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:text="@string/aboutMe" />
 
-                    <TextView
-                        style="@style/MainScreenFont"
-                        android:layout_width="fill_parent"
-                        android:layout_marginBottom="4dp"
-                        android:gravity="center"
-                        android:text="@string/work" />
+            </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/imgWork"
-                        android:layout_width="@dimen/main_icon_small_size"
-                        android:layout_height="@dimen/main_icon_small_size"
-                        android:layout_marginBottom="15dp"
-                        android:src="@drawable/icon_work"
-                        android:transitionName="@string/work" />
-                </LinearLayout>
 
-                <LinearLayout
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/MainScreenFont"
+                    android:layout_width="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:gravity="center"
+                    android:text="@string/edu" />
+
+                <ImageView
+                    android:id="@+id/imgEdu"
+                    android:layout_width="@dimen/main_icon_small_size"
+                    android:layout_height="@dimen/main_icon_small_size"
+                    android:layout_marginBottom="15dp"
+                    android:contentDescription="@string/edu"
+                    android:src="@drawable/icon_edu"
+                    android:transitionName="@string/edu" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/row2"
+            android:layout_marginTop="20dp"
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/imgAbout"
+                    android:layout_width="@dimen/main_icon_small_size"
+                    android:layout_height="@dimen/main_icon_small_size"
+                    android:contentDescription="@string/about"
+                    android:src="@drawable/icon_about" />
+
+                <TextView
+                    style="@style/MainScreenFont"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imgAvatar"
-                        android:layout_width="@dimen/main_profile_size"
-                        android:layout_height="@dimen/main_profile_size"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:src="@drawable/profile_pic" />
-
-                    <TextView
-                        style="@style/MainScreenFont"
-                        android:layout_width="fill_parent"
-                        android:layout_marginBottom="4dp"
-                        android:gravity="center"
-                        android:text="@string/aboutMe" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
+                    android:layout_marginTop="4dp"
                     android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/MainScreenFont"
-                        android:layout_width="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:gravity="center"
-                        android:text="@string/edu" />
-
-                    <ImageView
-                        android:id="@+id/imgEdu"
-                        android:layout_width="@dimen/main_icon_small_size"
-                        android:layout_height="@dimen/main_icon_small_size"
-                        android:layout_marginBottom="15dp"
-                        android:src="@drawable/icon_edu"
-                        android:transitionName="@string/edu" />
-                </LinearLayout>
+                    android:text="@string/about" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/row3"
-                android:layout_width="fill_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/row2"
-                android:layout_marginTop="25dp"
-                android:baselineAligned="false"
+                android:layout_weight="0.5"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/linearLayout2"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5"
+                <ImageView
+                    android:id="@+id/imgSkills"
+                    android:layout_width="@dimen/main_icon_small_size"
+                    android:layout_height="@dimen/main_icon_small_size"
+                    android:contentDescription="@string/skills"
+                    android:src="@drawable/icon_skills"
+                    android:transitionName="@string/skills" />
+
+                <TextView
+                    style="@style/MainScreenFont"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:gravity="center"
-                    android:orientation="vertical">
-
-
-                    <ImageView
-                        android:id="@+id/imgAbout"
-                        android:layout_width="@dimen/main_icon_small_size"
-                        android:layout_height="@dimen/main_icon_small_size"
-                        android:src="@drawable/icon_about" />
-
-                    <TextView
-                        style="@style/MainScreenFont"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:gravity="center"
-                        android:text="@string/about" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imgSkills"
-                        android:layout_width="@dimen/main_icon_small_size"
-                        android:layout_height="@dimen/main_icon_small_size"
-                        android:src="@drawable/icon_skills"
-                        android:transitionName="@string/skills" />
-
-                    <TextView
-                        style="@style/MainScreenFont"
-                        android:layout_width="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:gravity="center"
-                        android:text="@string/skills" />
-                </LinearLayout>
+                    android:text="@string/skills" />
             </LinearLayout>
+        </LinearLayout>
 
-        </RelativeLayout>
+    </RelativeLayout>
 
-    </ScrollView>
-
-
-</RelativeLayout>
+</ScrollView>

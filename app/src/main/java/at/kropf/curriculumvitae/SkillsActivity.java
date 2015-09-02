@@ -14,10 +14,11 @@ import at.kropf.curriculumvitae.fragment.AndroidSkillFragment;
 import at.kropf.curriculumvitae.fragment.InterestsFragment;
 import at.kropf.curriculumvitae.fragment.OtherSkillFragment;
 
+/*
+ * Acitivity holds a viewpager
+ * This viewpager holds the skills-fragments
+ */
 public class SkillsActivity extends AppCompatActivity {
-
-    PagerAdapter mFragmentAdapter;
-    ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,17 +31,18 @@ public class SkillsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setElevation(0);
 
-        mFragmentAdapter = new PagerAdapter(getSupportFragmentManager(), this);
+        PagerAdapter mFragmentAdapter = new PagerAdapter(getSupportFragmentManager(), this);
 
-        mViewPager = (ViewPager) findViewById(R.id.vpPager);
+        ViewPager mViewPager = (ViewPager) findViewById(R.id.vpPager);
         mViewPager.setAdapter(mFragmentAdapter);
 
         TitlePageIndicator titleIndicator = (TitlePageIndicator)findViewById(R.id.titles);
         titleIndicator.setViewPager(mViewPager);
     }
 
+    //PagerAdapter holds the actual fragments
     public static class PagerAdapter extends FragmentPagerAdapter {
-        private static int NUM_ITEMS = 3;
+        private final static int NUM_ITEMS = 3;
         private static Context mContext;
 
         public PagerAdapter(FragmentManager fragmentManager, Context context) {
@@ -58,11 +60,11 @@ public class SkillsActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             switch (position) {
-                case 0: // Fragment # 0 - This will show FirstFragment
+                case 0:
                     return AndroidSkillFragment.newInstance();
-                case 1: // Fragment # 0 - This will show FirstFragment different title
+                case 1:
                     return OtherSkillFragment.newInstance();
-                case 2: // Fragment # 0 - This will show FirstFragment different title
+                case 2:
                     return InterestsFragment.newInstance();
                 default:
                     return null;

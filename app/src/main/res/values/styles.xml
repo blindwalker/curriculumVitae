@@ -40,6 +40,18 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="headerText" parent="MainScreenFont">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:layout_marginBottom">24dp</item>
+    </style>
+
+    <style name="headerImage">
+        <item name="android:layout_width">@dimen/main_icon_large_size</item>
+        <item name="android:layout_height">@dimen/main_icon_large_size</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+
 
     <!-- Skills Screen -->
     <style name="PagerTabStripText">

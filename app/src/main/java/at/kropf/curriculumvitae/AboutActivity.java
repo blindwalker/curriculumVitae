@@ -14,8 +14,10 @@ import at.kropf.curriculumvitae.fragment.About4Fragment;
 import at.kropf.curriculumvitae.fragment.About5Fragment;
 import at.kropf.curriculumvitae.fragment.AndroidSkillFragment;
 
+/*
+ * Activity for displaying the viewpager holding the AboutFragments
+ */
 public class AboutActivity extends AppIntro {
-
 
     @Override
     public void init(Bundle bundle) {

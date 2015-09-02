@@ -4,18 +4,16 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * @author martinkropf
- * @since 05.09.13
+ * SharedPreferences to store values
  */
 public class PreferenceHandler {
-    private static final String TAG = PreferenceHandler.class.getName();
 
-    private static String USERNAME = "username";
-    private static String APP_PREFIX = "currVit_shared_pref";
-    private static String SESSION_TOKEN = "session_token";
-    private static String SESSION_EXPIRATION = "session_expires";
-    private static String NAME = "name";
-    private static String USER_IMAGE = "userimage";
+    private static final String USERNAME = "username";
+    private static final String APP_PREFIX = "currVit_shared_pref";
+    private static final String SESSION_TOKEN = "session_token";
+    private static final String SESSION_EXPIRATION = "session_expires";
+    private static final String NAME = "name";
+    private static final String USER_IMAGE = "userimage";
 
 
     private SharedPreferences globalPublicPreferences;

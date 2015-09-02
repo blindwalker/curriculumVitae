@@ -12,7 +12,7 @@ android {
         applicationId "at.kropf.curriculumvitae"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 6
+        versionCode 9
         versionName "1.2"
 
         resValue "string", "initialIP", "https://curriculumvitaemkropf.herokuapp.com/"

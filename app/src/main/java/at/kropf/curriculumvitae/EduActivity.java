@@ -3,6 +3,9 @@ package at.kropf.curriculumvitae;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+/*
+ * Activity for displaying the education layout
+ */
 public class EduActivity extends AppCompatActivity {
 
     @Override

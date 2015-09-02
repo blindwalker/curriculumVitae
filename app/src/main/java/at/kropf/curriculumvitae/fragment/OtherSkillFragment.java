@@ -16,24 +16,17 @@ import at.kropf.curriculumvitae.Skill;
 import at.kropf.curriculumvitae.SkillsAdapter;
 
 /**
- * Created by martinkropf on 28.08.15.
+ * Fragment which is displayed in viewpager
  */
 public class OtherSkillFragment extends Fragment {
 
 
-    private int[] images = {R.drawable.php_header, R.drawable.sketch_header, R.drawable.git_header};
-    private String[] titles = {"PHP", "Sketch", "Git"};
-    private int[] contents = {R.string.skill_php, R.string.skill_sketch, R.string.skill_git};
+    private final String[] titles = {"PHP", "Sketch", "Git"};
+    private final int[] contents = {R.string.skill_php, R.string.skill_sketch, R.string.skill_git};
 
     // newInstance constructor for creating fragment with arguments
     public static OtherSkillFragment newInstance() {
         return new OtherSkillFragment();
-    }
-
-    // Store instance variables based on arguments passed
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -41,25 +34,26 @@ public class OtherSkillFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_android_skills, container, false);
 
+        //Create recyclerView and add it to layout
         RecyclerView recList = (RecyclerView) v.findViewById(R.id.cardList);
         recList.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
 
-        SkillsAdapter ca = new SkillsAdapter(createList(images.length));
+        SkillsAdapter ca = new SkillsAdapter(createList(titles.length));
         recList.setAdapter(ca);
 
         return v;
     }
 
+    //create skill from array
     private List<Skill> createList(int size) {
 
-        List<Skill> result = new ArrayList<Skill>();
+        List<Skill> result = new ArrayList<>();
         for (int i = 0; i < size; i++) {
 
             Skill skill = new Skill();
-            skill.skillImage = getResources().getDrawable(images[i]);
             skill.skillName = titles[i];
             skill.skillText = getResources().getString(contents[i]);
 

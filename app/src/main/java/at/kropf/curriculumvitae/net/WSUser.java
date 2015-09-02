@@ -8,11 +8,12 @@ import at.kropf.curriculumvitae.R;
 import at.kropf.curriculumvitae.net.model.UserRequestObject;
 
 /**
- * Created by martinkropf on 01.07.15.
+ * User Webservice Class
+ * Holds methods for userCheck and login
  */
 public class WSUser extends BaseRequestData {
 
-    Context context;
+    private final Context context;
 
     public WSUser(Context context, ResponseListener listener) {
         super(context, listener);

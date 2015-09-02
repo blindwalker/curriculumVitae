@@ -10,11 +10,11 @@ import android.widget.TextView;
 import java.util.List;
 
 /**
- * Created by martinkropf on 20.08.15.
+ * Adapter which holds the view and maps the data
  */
 public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.ContactViewHolder> {
 
-    private List<Skill> contactList;
+    private final List<Skill> contactList;
 
     public SkillsAdapter(List<Skill> contactList) {
         this.contactList = contactList;
@@ -31,12 +31,6 @@ public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.ContactVie
         Skill skill = contactList.get(i);
         contactViewHolder.vContent.setText(skill.skillText);
         contactViewHolder.vTitle.setText(skill.skillName);
-        if (skill.skillImage == null) {
-            contactViewHolder.vImage.setVisibility(View.GONE);
-        } else {
-            contactViewHolder.vImage.setImageDrawable(skill.skillImage);
-
-        }
     }
 
     @Override
@@ -50,14 +44,12 @@ public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.ContactVie
 
     public static class ContactViewHolder extends RecyclerView.ViewHolder {
 
-        protected TextView vTitle;
-        protected TextView vContent;
-        protected ImageView vImage;
+        private final TextView vTitle;
+        private final TextView vContent;
 
         public ContactViewHolder(View v) {
             super(v);
             vContent = (TextView) v.findViewById(R.id.cardContent);
-            vImage = (ImageView) v.findViewById(R.id.cardImage);
             vTitle = (TextView) v.findViewById(R.id.cardTitle);
         }
     }

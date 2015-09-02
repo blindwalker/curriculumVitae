@@ -27,7 +27,7 @@ public class BaseRequestData {
 
     public static final String NO_CONNECTION_TITLE = "noConnection";
 
-    public ResponseListener responseListener;
+    public final ResponseListener responseListener;
 
     private Context context;
 
@@ -45,7 +45,7 @@ public class BaseRequestData {
     *   POST
     *   post json data to backend
      */
-    public void performCall(String url, JSONObject jsonObj) throws JSONException {
+    public void performCall(String url, JSONObject jsonObj) {
         JsonUTF8Request jsonObjectRequest = new JsonUTF8Request(Request.Method.POST,
                 url,
                 jsonObj,
@@ -53,6 +53,8 @@ public class BaseRequestData {
                 createMyReqErrorListener());
         RetryPolicy policy = new DefaultRetryPolicy(TIMEOUT, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         jsonObjectRequest.setRetryPolicy(policy);
+
+        Log.d("REQUEST", jsonObj.toString());
 
         VolleySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
 
@@ -118,8 +120,6 @@ public class BaseRequestData {
             }
         };
 
-        this.context = context;
-
         RetryPolicy policy = new DefaultRetryPolicy(TIMEOUT, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         putRequest.setRetryPolicy(policy);
 
@@ -131,7 +131,7 @@ public class BaseRequestData {
     *   DELETE
     *   send delete request to backend
     */
-    public void performCallDelete(String url, final JSONObject jsonObj) throws JSONException {
+    public void performCallDelete(String url, final JSONObject jsonObj) {
         StringRequest deleteRequest = new StringRequest(
                 Request.Method.DELETE,
                 url,
@@ -193,6 +193,7 @@ public class BaseRequestData {
             public void onResponse(Object response) {
                 try {
                     JSONObject responseJson = new JSONObject(((String) response));
+                    Log.d("REQUEST", responseJson.toString());
                     responseListener.onComplete(responseJson);
 
 
@@ -233,6 +234,7 @@ public class BaseRequestData {
             @Override
             public void onResponse(JSONObject response) {
                 try {
+                    Log.d("REQUEST", response.toString());
                     responseListener.onComplete(response);
 
                 } catch (Exception e) {

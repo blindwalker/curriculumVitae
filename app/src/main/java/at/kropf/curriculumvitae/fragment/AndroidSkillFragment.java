@@ -16,24 +16,16 @@ import at.kropf.curriculumvitae.Skill;
 import at.kropf.curriculumvitae.SkillsAdapter;
 
 /**
- * Created by martinkropf on 28.08.15.
+ * Fragment which is displayed in viewpager
  */
 public class AndroidSkillFragment extends Fragment {
 
-
-    private int[] images = {R.drawable.android_header, 0, 0, 0};
-    private String[] titles = {"Android", "REST", "Security", "Bluetooth Low Energy"};
-    private int[] contents = {R.string.skill_android, R.string.skill_android_rest, R.string.skill_android_security, R.string.skill_android_ble};
+    private final String[] titles = {"Android", "REST", "Security", "Bluetooth Low Energy"};
+    private final int[] contents = {R.string.skill_android, R.string.skill_android_rest, R.string.skill_android_security, R.string.skill_android_ble};
 
     // newInstance constructor for creating fragment with arguments
     public static AndroidSkillFragment newInstance() {
         return new AndroidSkillFragment();
-    }
-
-    // Store instance variables based on arguments passed
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -41,31 +33,26 @@ public class AndroidSkillFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_android_skills, container, false);
 
+        //Create recyclerView and add it to layout
         RecyclerView recList = (RecyclerView) v.findViewById(R.id.cardList);
         recList.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
 
-        SkillsAdapter ca = new SkillsAdapter(createList(4));
+        SkillsAdapter ca = new SkillsAdapter(createList(titles.length));
         recList.setAdapter(ca);
 
         return v;
     }
 
+    //create skill from array
     private List<Skill> createList(int size) {
 
         List<Skill> result = new ArrayList<>();
         for (int i = 0; i < size; i++) {
 
             Skill skill = new Skill();
-            if (images[i] != 0) {
-                skill.skillImage = getResources().getDrawable(images[i]);
-
-            } else {
-                skill.skillImage = null;
-
-            }
             skill.skillName = titles[i];
             skill.skillText = getResources().getString(contents[i]);
 
