@@ -31,147 +31,222 @@
             android:textSize="24sp" />
     </LinearLayout>
 
-    <View
-        android:id="@+id/lineView"
-        android:layout_width="1dp"
-        android:layout_height="240dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+
+    <ScrollView
+        android:layout_width="wrap_content"
         android:layout_below="@+id/headWrapper"
-        android:layout_marginLeft="140dp"
-        android:layout_marginStart="83dp"
-        android:background="#494646" />
+        android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:id="@+id/rl1"
-        android:layout_marginTop="22dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/headWrapper">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textView"
-            style="@style/WorkText"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="29dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/month_akaryon"
-            android:layout_width="90dp" />
+            <View
+                android:id="@+id/lineView"
+                android:layout_width="1dp"
+                android:layout_height="380dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="130dp"
+                android:layout_marginStart="130dp"
+                android:background="#494646" />
 
-        <TextView
-            android:id="@+id/textView2"
-            style="@style/WorkText"
-            android:layout_alignLeft="@+id/textView"
-            android:layout_alignStart="@+id/textView"
-            android:layout_below="@+id/textView"
-            android:layout_marginTop="5dp"
-            android:text="@string/year_akaryon"
-            android:textSize="16sp" />
+            <RelativeLayout
+                android:id="@+id/rl2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:layout_alignTop="@+id/textView2"
-            android:layout_toEndOf="@+id/textView"
-            android:layout_toRightOf="@+id/textView"
-            android:src="@drawable/icon_akaryon" />
+                <TextView
+                    android:id="@+id/textView6"
+                    style="@style/WorkText"
+                    android:layout_width="90dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="25dp"
+                    android:text="@string/year_nekom"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
 
-        <TextView
-            android:id="@+id/textView3"
-            style="@style/WorkText"
-            android:fontFamily="sans-serif-light"
-            android:layout_alignBottom="@+id/textView"
-            android:layout_alignEnd="@+id/textView4"
-            android:layout_alignRight="@+id/textView4"
-            android:text="@string/akaryon"
-            android:textSize="23sp" />
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_below="@+id/textView8"
+                    android:layout_marginLeft="-13dp"
+                    android:layout_marginStart="-13dp"
+                    android:layout_toEndOf="@+id/textView6"
+                    android:layout_toRightOf="@+id/textView6"
+                    android:src="@drawable/icon_nekom" />
 
-        <TextView
-            android:id="@+id/textView4"
-            style="@style/WorkText"
-            android:layout_alignBottom="@+id/textView2"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="12dp"
-            android:layout_marginEnd="12dp"
-            android:text="@string/akaryon_1" />
+                <TextView
+                    android:id="@+id/textView8"
+                    style="@style/WorkTextLarge"
+                    android:layout_alignBottom="@+id/textView6"
+                    android:layout_alignEnd="@+id/textView9"
+                    android:layout_alignRight="@+id/textView9"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/nekom"
+                    android:textSize="23sp" />
 
-        <TextView
-            android:id="@+id/textView5"
-            style="@style/WorkText"
-            android:layout_width="150dp"
-            android:gravity="end"
-            android:text="@string/akaryon_2"
-            android:layout_below="@+id/textView2"
-            android:layout_alignRight="@+id/textView4"
-            android:layout_alignEnd="@+id/textView4"
-            android:layout_marginTop="4dp" />
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/textView9"
+                    style="@style/WorkText"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/imageView2"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/nekom_1" />
 
-    <RelativeLayout
-        android:id="@+id/rl2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rl1"
-        android:layout_marginTop="40dp">
+                <TextView
+                    android:id="@+id/textView10"
+                    style="@style/WorkText"
+                    android:layout_alignEnd="@+id/textView9"
+                    android:layout_alignRight="@+id/textView9"
+                    android:layout_below="@+id/textView9"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/nekom_2" />
 
-        <TextView
-            android:id="@+id/textView6"
-            style="@style/WorkText"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="25dp"
-            android:text="@string/year_nekom"
-            android:textSize="16sp"
-            android:visibility="visible"
-            android:layout_width="90dp" />
+            </RelativeLayout>
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:layout_below="@+id/textView8"
-            android:layout_toEndOf="@+id/textView6"
-            android:layout_toRightOf="@+id/textView6"
-            android:src="@drawable/icon_nekom" />
 
-        <TextView
-            android:id="@+id/textView8"
-            style="@style/WorkText"
-            android:layout_alignBottom="@+id/textView6"
-            android:layout_alignEnd="@+id/textView9"
-            android:layout_alignRight="@+id/textView9"
-            android:text="@string/nekom"
-            android:fontFamily="sans-serif-light"
-            android:textSize="23sp" />
+            <RelativeLayout
+                android:id="@+id/rl1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl2"
+                android:layout_marginTop="22dp">
 
-        <TextView
-            android:id="@+id/textView9"
-            style="@style/WorkText"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/imageView2"
-            android:layout_marginRight="12dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginTop="5dp"
-            android:text="@string/nekom_1" />
+                <TextView
+                    android:id="@+id/textView"
+                    style="@style/WorkText"
+                    android:layout_width="90dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="29dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/month_akaryon" />
 
-        <TextView
-            android:id="@+id/textView10"
-            style="@style/WorkText"
-            android:layout_below="@+id/textView9"
-            android:layout_alignRight="@+id/textView9"
-            android:layout_alignEnd="@+id/textView9"
-            android:layout_marginTop="4dp"
-            android:text="@string/nekom_2" />
+                <TextView
+                    android:id="@+id/textView2"
+                    style="@style/WorkText"
+                    android:layout_alignLeft="@+id/textView"
+                    android:layout_alignStart="@+id/textView"
+                    android:layout_below="@+id/textView"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/year_akaryon"
+                    android:textSize="16sp" />
 
-    </RelativeLayout>
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_alignTop="@+id/textView2"
+                    android:layout_marginLeft="-13dp"
+                    android:layout_marginStart="-13dp"
+                    android:layout_toEndOf="@+id/textView"
+                    android:layout_toRightOf="@+id/textView"
+                    android:src="@drawable/icon_akaryon" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    style="@style/WorkTextLarge"
+                    android:layout_alignBottom="@+id/textView"
+                    android:layout_alignEnd="@+id/textView4"
+                    android:layout_alignRight="@+id/textView4"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/akaryon"
+                    android:textSize="23sp" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    style="@style/WorkText"
+                    android:layout_alignBottom="@+id/textView2"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
+                    android:text="@string/akaryon_1" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    style="@style/WorkText"
+                    android:layout_width="130dp"
+                    android:layout_alignEnd="@+id/textView4"
+                    android:layout_alignRight="@+id/textView4"
+                    android:layout_below="@+id/textView2"
+                    android:layout_marginTop="4dp"
+                    android:gravity="end"
+                    android:text="@string/akaryon_2" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl1"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="20dp"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/textView16"
+                    style="@style/WorkText"
+                    android:layout_width="90dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="25dp"
+                    android:text="@string/year_comm_service"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/imageView12"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_marginLeft="-11dp"
+                    android:layout_marginStart="-11dp"
+                    android:layout_below="@+id/textView16"
+                    android:layout_toEndOf="@+id/textView16"
+                    android:layout_toRightOf="@+id/textView16"
+                    android:src="@drawable/icon_zivi" />
+
+                <TextView
+                    android:id="@+id/textView18"
+                    style="@style/WorkTextLarge"
+                    android:layout_alignEnd="@+id/textView19"
+                    android:layout_alignRight="@+id/textView19"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/comm_service"
+                    android:textSize="23sp"
+                    android:layout_alignTop="@+id/textView16"
+                    android:gravity="end" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    style="@style/WorkText"
+                    android:layout_width="150dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="end"
+                    android:text="@string/red_cross"
+                    android:layout_below="@+id/textView18" />
+
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
 
 
 </RelativeLayout>

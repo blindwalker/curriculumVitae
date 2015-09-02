@@ -20,9 +20,11 @@ import com.cocosw.bottomsheet.BottomSheet;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 
+import java.io.File;
 import java.util.List;
 
 import at.kropf.curriculumvitae.application.CurriculumVitaeApplication;
+import at.kropf.curriculumvitae.augmented.SampleCamActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imgEdu;
     private ImageView imgSkills;
     private ImageView imgAbout;
+    private ImageView imgMe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         imgEdu = (ImageView) findViewById(R.id.imgEdu);
         imgAbout = (ImageView) findViewById(R.id.imgAbout);
         imgSkills = (ImageView) findViewById(R.id.imgSkills);
+        imgMe = (ImageView) findViewById(R.id.imgAvatar);
 
         imgWork.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,6 +140,31 @@ public class MainActivity extends AppCompatActivity {
                 }).show();
             }
         });
+
+        imgAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AboutActivity.class));
+
+            }
+        });
+
+        imgMe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SampleCamActivity.class);
+                intent.putExtra(SampleCamActivity.EXTRAS_KEY_ACTIVITY_TITLE_STRING,
+                        "1.3 Interactivity");
+                intent.putExtra(SampleCamActivity.EXTRAS_KEY_ACTIVITY_ARCHITECT_WORLD_URL, "samples"
+                        + File.separator + "1_Client$Recognition_3_Interactivity"
+                        + File.separator + "index.html");
+                intent.putExtra(SampleCamActivity.EXTRAS_KEY_ACTIVITY_IR,
+                        true);
+                intent.putExtra(SampleCamActivity.EXTRAS_KEY_ACTIVITY_GEO,
+                        false);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setUpMenu() {
@@ -164,7 +193,6 @@ public class MainActivity extends AppCompatActivity {
         resideMenu.addMenuItem(itemLogout, ResideMenu.DIRECTION_LEFT);
 
         resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
-        resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_LEFT);
 
         findViewById(R.id.imgAvatar).setOnClickListener(new View.OnClickListener() {
             @Override

@@ -3,4 +3,5 @@
     <dimen name="main_icon_small_size">50dp</dimen>
     <dimen name="main_icon_large_size">70dp</dimen>
     <dimen name="main_profile_size">100dp</dimen>
+    <dimen name="workTextLargeSize">17sp</dimen>
 </resources>

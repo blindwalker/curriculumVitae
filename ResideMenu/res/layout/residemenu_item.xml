@@ -15,6 +15,7 @@
         android:textSize="20sp"
         android:fontFamily="sans-serif-light"
         android:layout_marginLeft="10dp"
+        android:paddingTop="5dp"
         android:id="@+id/tv_title" />
 
 </LinearLayout>

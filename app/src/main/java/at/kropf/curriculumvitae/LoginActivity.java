@@ -34,6 +34,7 @@ import at.kropf.curriculumvitae.net.WSUser;
 import at.kropf.curriculumvitae.net.model.Session;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
+import me.philio.pinentry.PinEntryView;
 
 /**
  * A login screen that offers login via email/password.
@@ -47,13 +48,13 @@ public class LoginActivity extends Activity {
     private UserLoginTaskSecond mAuthTaskSecond = null;
 
     // UI references.
-    private AutoCompleteTextView mEmailView;
-    private EditText mPasswordView;
+    private EditText mEmailView;
+    private PinEntryView mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
     private TextView txtHello;
     private TextView noAccount;
-    private TextView differentAccount;
+    private Button differentAccount;
     private ImageView mProfileView;
     private Button mCheckUserButton;
     private Button mEmailSignInButton;
@@ -69,11 +70,27 @@ public class LoginActivity extends Activity {
         }
 
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mEmailView = (EditText) findViewById(R.id.email);
+
+        mEmailView.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (event != null && event.getAction() != KeyEvent.ACTION_DOWN) {
+                    return false;
+                } else if (actionId == EditorInfo.IME_ACTION_SEARCH
+                        || event == null
+                        || event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                    attemptUserCheck();
+                    return true;
+                }
+                return true;
+            }
+        });
+
         txtHello  =(TextView) findViewById(R.id.txtHello);
 
         noAccount  =(TextView) findViewById(R.id.noAccount);
-        differentAccount  =(TextView) findViewById(R.id.differentAccount);
+        differentAccount  =(Button) findViewById(R.id.differentAccount);
 
         mProfileView = (ImageView)findViewById(R.id.profile_image);
 
@@ -94,17 +111,8 @@ public class LoginActivity extends Activity {
             }
         });
 
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
+        mPasswordView = (PinEntryView) findViewById(R.id.password);
+
         mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mCheckUserButton = (Button) findViewById(R.id.check_user_button);
 
@@ -112,8 +120,6 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(View view) {
                 attemptUserCheck();
-                view.setVisibility(View.GONE);
-                mEmailSignInButton.setVisibility(View.VISIBLE);
             }
         });
 
@@ -133,8 +139,6 @@ public class LoginActivity extends Activity {
             return;
         }
 
-        // Reset errors.
-        mEmailView.setError(null);
 
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
@@ -144,11 +148,7 @@ public class LoginActivity extends Activity {
 
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
-            mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
-            cancel = true;
-        } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
+            Crouton.makeText(LoginActivity.this, getString(R.string.error_field_required), Style.ALERT).show();
             focusView = mEmailView;
             cancel = true;
         }
@@ -161,6 +161,8 @@ public class LoginActivity extends Activity {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
+            mCheckUserButton.setVisibility(View.GONE);
+            mEmailSignInButton.setVisibility(View.VISIBLE);
             mAuthTaskFirst = new UserLoginTaskFirst(email);
             mAuthTaskFirst.execute((Void) null);
         }
@@ -171,10 +173,6 @@ public class LoginActivity extends Activity {
             return;
         }
 
-        // Reset errors.
-        mEmailView.setError(null);
-        mPasswordView.setError(null);
-
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
@@ -183,20 +181,9 @@ public class LoginActivity extends Activity {
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
+        if (TextUtils.isEmpty(password)) {
+            Crouton.makeText(LoginActivity.this, getString(R.string.noPinError), Style.ALERT).show();
             focusView = mPasswordView;
-            cancel = true;
-        }
-
-        // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
-            mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
-            cancel = true;
-        } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
-            focusView = mEmailView;
             cancel = true;
         }
 
@@ -276,7 +263,6 @@ public class LoginActivity extends Activity {
             WSUser wsUser = new WSUser(LoginActivity.this, new ResponseListener() {
                 @Override
                 public void onComplete(JSONObject json) {
-                    Log.d("RESPONSE", json.toString());
                     Session session = Session.readSessionFirst(json);
                     showProgress(false);
 
@@ -286,7 +272,7 @@ public class LoginActivity extends Activity {
                         mPasswordView.setVisibility(View.VISIBLE);
                         mEmailView.setVisibility(View.GONE);
                         txtHello.setVisibility(View.VISIBLE);
-                        txtHello.setText(getString(R.string.hello) + " " + session.getUser().getUsername());
+                        txtHello.setText(getString(R.string.hello) + " " + session.getUser().getName());
                         differentAccount.setVisibility(View.VISIBLE);
                         noAccount.setVisibility(View.GONE);
                     }
@@ -351,7 +337,6 @@ public class LoginActivity extends Activity {
             WSUser wsUser = new WSUser(LoginActivity.this, new ResponseListener() {
                 @Override
                 public void onComplete(JSONObject json) {
-                    Log.d("RESPONSE", json.toString());
                     Session session = Session.readSessionSecond(json);
                     if (session != null) {
                         CurriculumVitaeApplication.getInstance().getPreferenceHandler().setSessionToken(session.getToken());
@@ -359,7 +344,6 @@ public class LoginActivity extends Activity {
                         CurriculumVitaeApplication.getInstance().getPreferenceHandler().setName(session.getUser().getName());
                         CurriculumVitaeApplication.getInstance().getPreferenceHandler().setUserName(session.getUser().getUsername());
                         CurriculumVitaeApplication.getInstance().getPreferenceHandler().setUserImage(session.getUser().getImage());
-
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
 
@@ -369,9 +353,10 @@ public class LoginActivity extends Activity {
                 @Override
                 public void onError(Throwable error) {
                     Log.e("RESPONSE", error.toString());
+                    showProgress(false);
                     if(error instanceof AuthFailureError){
-                        Crouton.makeText(LoginActivity.this, getString(R.string.invalidUserError), Style.ALERT).show();
-                    }else if(error instanceof NoConnectionError){
+                        Crouton.makeText(LoginActivity.this, getString(R.string.invalidPinError), Style.ALERT).show();
+                    } else if(error instanceof NoConnectionError){
                         Crouton.makeText(LoginActivity.this, getString(R.string.noConnection), Style.ALERT).show();
 
                     }
@@ -382,6 +367,7 @@ public class LoginActivity extends Activity {
                 wsUser.doLoginSecond(mEmail, mPassword);
             } catch (JSONException e) {
                 e.printStackTrace();
+                showProgress(false);
             }
 
             return true;
@@ -389,24 +375,22 @@ public class LoginActivity extends Activity {
 
         @Override
         protected void onPostExecute(final Boolean success) {
-            mAuthTaskFirst = null;
-            showProgress(false);
+            mAuthTaskSecond = null;
 
             if (!success) {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
             }
         }
 
         @Override
         protected void onCancelled() {
-            mAuthTaskFirst = null;
+            mAuthTaskSecond = null;
             showProgress(false);
         }
     }
 
     private void resetViewsToInit(){
-        mProfileView.setVisibility(View.INVISIBLE);
+        mProfileView.setImageDrawable(getResources().getDrawable(R.drawable.ic_launcher));
         mPasswordView.setVisibility(View.GONE);
         mEmailView.setVisibility(View.VISIBLE);
         txtHello.setVisibility(View.GONE);

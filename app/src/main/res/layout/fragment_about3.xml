@@ -1,0 +1,44 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    tools:context="at.kropf.curriculumvitae.fragment.About3Fragment"
+    android:background="@color/colorPrimary">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="75dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="123dp"
+            android:id="@+id/imageView3"
+            android:src="@drawable/icon_json"
+            android:layout_marginTop="21dp"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            style="@style/MainScreenFont"
+            android:textColor="#ffffff"
+            android:textSize="23sp"
+            android:text="@string/communication"
+            android:fontFamily="sans-serif-light"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:id="@+id/textView7" />
+
+        <TextView
+            style="@style/MainScreenFont"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:textColor="#ffffff"
+            android:textSize="23sp"
+            android:text="@string/about_content3"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="38dp"
+            android:id="@+id/textView8" />
+    </LinearLayout>
+</ScrollView>

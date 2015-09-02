@@ -46,16 +46,11 @@ public class BaseRequestData {
     *   post json data to backend
      */
     public void performCall(String url, JSONObject jsonObj) throws JSONException {
-        Log.d("REQUEST", "state is true");
-
         JsonUTF8Request jsonObjectRequest = new JsonUTF8Request(Request.Method.POST,
                 url,
                 jsonObj,
                 createMyReqSuccessListener(),
                 createMyReqErrorListener());
-
-        Log.d("REQUEST", "SENT:" + jsonObjectRequest.toString() + jsonObj);
-
         RetryPolicy policy = new DefaultRetryPolicy(TIMEOUT, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         jsonObjectRequest.setRetryPolicy(policy);
 
@@ -75,8 +70,6 @@ public class BaseRequestData {
     *   send get request to backend
     */
     public void performCallGet(String url) {
-        Log.d("REQUEST", "state is true");
-
         StringRequest stringRequest = new StringRequest(
                 Request.Method.GET,
                 url,
@@ -98,8 +91,6 @@ public class BaseRequestData {
     *   send put request to backend
     */
     public void performCallPut(String url, final JSONObject jsonObject) {
-        Log.d("REQUEST", "state is true");
-
         StringRequest putRequest = new StringRequest(
                 Request.Method.PUT,
                 url,
@@ -119,7 +110,6 @@ public class BaseRequestData {
             public byte[] getBody() {
 
                 try {
-                    Log.i("json", jsonObject.toString());
                     return jsonObject.toString().getBytes("UTF-8");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
@@ -132,8 +122,6 @@ public class BaseRequestData {
 
         RetryPolicy policy = new DefaultRetryPolicy(TIMEOUT, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         putRequest.setRetryPolicy(policy);
-        Log.d("REQUEST", "SENT:" + url);
-
 
         VolleySingleton.getInstance(context).addToRequestQueue(putRequest);
 
@@ -144,8 +132,6 @@ public class BaseRequestData {
     *   send delete request to backend
     */
     public void performCallDelete(String url, final JSONObject jsonObj) throws JSONException {
-        Log.d("REQUEST", "state is true");
-
         StringRequest deleteRequest = new StringRequest(
                 Request.Method.DELETE,
                 url,
@@ -165,7 +151,6 @@ public class BaseRequestData {
             public byte[] getBody() {
 
                 try {
-                    Log.i("json", jsonObj.toString());
                     return jsonObj.toString().getBytes("UTF-8");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
@@ -207,8 +192,6 @@ public class BaseRequestData {
             @Override
             public void onResponse(Object response) {
                 try {
-                    Log.d("REQUESTSUCC", "response: " + response);
-
                     JSONObject responseJson = new JSONObject(((String) response));
                     responseListener.onComplete(responseJson);
 
@@ -250,8 +233,6 @@ public class BaseRequestData {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-
-                    Log.d("REQUESTSUCC", "response: " + response);
                     responseListener.onComplete(response);
 
                 } catch (Exception e) {

@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.viewpagerindicator.TitlePageIndicator;
+
 import at.kropf.curriculumvitae.fragment.AndroidSkillFragment;
 import at.kropf.curriculumvitae.fragment.InterestsFragment;
 import at.kropf.curriculumvitae.fragment.OtherSkillFragment;
@@ -22,7 +24,6 @@ public class SkillsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_skills);
 
-
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.icon_back);
@@ -33,6 +34,9 @@ public class SkillsActivity extends AppCompatActivity {
 
         mViewPager = (ViewPager) findViewById(R.id.vpPager);
         mViewPager.setAdapter(mFragmentAdapter);
+
+        TitlePageIndicator titleIndicator = (TitlePageIndicator)findViewById(R.id.titles);
+        titleIndicator.setViewPager(mViewPager);
     }
 
     public static class PagerAdapter extends FragmentPagerAdapter {

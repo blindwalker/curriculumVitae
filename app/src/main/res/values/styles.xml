@@ -31,14 +31,38 @@
 
     <!-- Work Screen -->
     <style name="WorkText" parent="MainScreenFont">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/workTextSize</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <style name="WorkTextLarge" parent="MainScreenFont">
+        <item name="android:textSize">@dimen/workTextLargeSize</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 
     <!-- Skills Screen -->
     <style name="PagerTabStripText">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="Widget.MyTitlepageIndicator">
+        <item name="footerColor">@color/white</item>
+        <item name="footerIndicatorStyle">underline</item>
+        <item name="footerIndicatorHeight">3dp</item>
+        <item name="footerLineHeight">1.5dp</item>
+        <item name="footerPadding">6dp</item>
+        <item name="selectedColor">#ffffff</item>
+    </style>
+
+    <!-- About Screen -->
+    <style name="AboutScreenFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
     </style>
 </resources>
