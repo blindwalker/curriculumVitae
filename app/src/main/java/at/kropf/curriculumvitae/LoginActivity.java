@@ -15,7 +15,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,9 +28,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import at.kropf.curriculumvitae.application.CurriculumVitaeApplication;
-import at.kropf.curriculumvitae.net.ResponseListener;
 import at.kropf.curriculumvitae.net.WSUser;
 import at.kropf.curriculumvitae.net.model.Session;
+import at.kropf.mkropfvolley.ResponseListener;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 import me.philio.pinentry.PinEntryView;
@@ -404,8 +403,8 @@ public class LoginActivity extends Activity {
             runOnUiThread(new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    resetViewsToInit();
                     showProgress(false);
+                    mPinView.setText("");
                 }
             }));
         }

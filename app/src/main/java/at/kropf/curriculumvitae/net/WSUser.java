@@ -6,18 +6,22 @@ import org.json.JSONException;
 
 import at.kropf.curriculumvitae.R;
 import at.kropf.curriculumvitae.net.model.UserRequestObject;
+import at.kropf.mkropfvolley.BaseRequestData;
+import at.kropf.mkropfvolley.ResponseListener;
 
 /**
  * User Webservice Class
  * Holds methods for userCheck and login
  */
-public class WSUser extends BaseRequestData {
+public class WSUser {
 
     private final Context context;
 
+    BaseRequestData baseRequestData;
+
     public WSUser(Context context, ResponseListener listener) {
-        super(context, listener);
         this.context = context;
+        baseRequestData = new BaseRequestData(context, listener);
     }
 
     public void doLoginFirst(String email) throws JSONException {
@@ -25,8 +29,7 @@ public class WSUser extends BaseRequestData {
         UserRequestObject user = new UserRequestObject();
         user.setUsername(email);
 
-        performCall(context.getResources().getString(R.string.initialIP) + context.getString(R.string.doLogin), user.toJSONString());
-
+        baseRequestData.doPost(context.getResources().getString(R.string.initialIP) + context.getString(R.string.doLogin), user.toJSONString());
 
     }
 
@@ -36,8 +39,7 @@ public class WSUser extends BaseRequestData {
         user.setUsername(email);
         user.setPassword(password);
 
-        performCall(context.getResources().getString(R.string.initialIP) + context.getString(R.string.doLogin2), user.toJSONString());
-
+        baseRequestData.doPost(context.getResources().getString(R.string.initialIP) + context.getString(R.string.doLogin2), user.toJSONString());
 
     }
 

@@ -14,7 +14,7 @@
         android:textColor="@android:color/black"
         android:textSize="20sp"
         android:fontFamily="sans-serif-light"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="40dp"
         android:paddingTop="5dp"
         android:id="@+id/tv_title" />
 
