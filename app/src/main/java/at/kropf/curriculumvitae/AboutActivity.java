@@ -1,19 +1,14 @@
 package at.kropf.curriculumvitae;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.github.paolorotolo.appintro.AppIntro;
 
-import at.kropf.curriculumvitae.fragment.About1Fragment;
+import at.kropf.curriculumvitae.fragment.AboutFragment;
 import at.kropf.curriculumvitae.fragment.About2Fragment;
 import at.kropf.curriculumvitae.fragment.About3Fragment;
 import at.kropf.curriculumvitae.fragment.About4Fragment;
-import at.kropf.curriculumvitae.fragment.About5Fragment;
 import at.kropf.curriculumvitae.fragment.About6Fragment;
-import at.kropf.curriculumvitae.fragment.AndroidSkillFragment;
 
 /*
  * Activity for displaying the viewpager holding the AboutFragments
@@ -29,12 +24,12 @@ public class AboutActivity extends AppIntro {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setElevation(0);
 
-        addSlide(new About1Fragment());
-        addSlide(new About2Fragment());
-        addSlide(new About3Fragment());
+        addSlide(AboutFragment.newInstance(1));
+        addSlide(AboutFragment.newInstance(2));
+        addSlide(AboutFragment.newInstance(3));
         //addSlide(new About5Fragment());
-        addSlide(new About4Fragment());
-        addSlide(new About6Fragment());
+        addSlide(AboutFragment.newInstance(4));
+        addSlide(AboutFragment.newInstance(6));
 
         setBarColor(getResources().getColor(R.color.white));
         setBarColor(getResources().getColor(R.color.colorPrimaryDark));
