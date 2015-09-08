@@ -12,6 +12,7 @@ import at.kropf.curriculumvitae.fragment.About2Fragment;
 import at.kropf.curriculumvitae.fragment.About3Fragment;
 import at.kropf.curriculumvitae.fragment.About4Fragment;
 import at.kropf.curriculumvitae.fragment.About5Fragment;
+import at.kropf.curriculumvitae.fragment.About6Fragment;
 import at.kropf.curriculumvitae.fragment.AndroidSkillFragment;
 
 /*
@@ -31,8 +32,9 @@ public class AboutActivity extends AppIntro {
         addSlide(new About1Fragment());
         addSlide(new About2Fragment());
         addSlide(new About3Fragment());
-        addSlide(new About5Fragment());
+        //addSlide(new About5Fragment());
         addSlide(new About4Fragment());
+        addSlide(new About6Fragment());
 
         setBarColor(getResources().getColor(R.color.white));
         setBarColor(getResources().getColor(R.color.colorPrimaryDark));

@@ -13,4 +13,8 @@
         android:id="@+id/linkedIn"
         android:title="@string/linked_in"
         android:icon="@drawable/icon_linkedin" />
+    <item
+        android:id="@+id/github"
+        android:title="@string/github"
+        android:icon="@drawable/icon_github" />
 </menu>

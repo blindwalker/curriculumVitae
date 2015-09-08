@@ -43,6 +43,8 @@ public class LoginActivity extends Activity {
     private UserLoginTaskFirst mAuthTaskFirst = null;
     private UserLoginTaskSecond mAuthTaskSecond = null;
 
+    private String enteredUsername;
+
     // UI references.
     private EditText mUsernameView;
     private PinEntryView mPinView;
@@ -141,13 +143,13 @@ public class LoginActivity extends Activity {
 
 
         // Store values at the time of the login attempt.
-        String username = mUsernameView.getText().toString();
+        enteredUsername = mUsernameView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
         // Check for a empty username.
-        if (TextUtils.isEmpty(username)) {
+        if (TextUtils.isEmpty(enteredUsername)) {
             Crouton.makeText(LoginActivity.this, getString(R.string.error_field_required), Style.ALERT).show();
             focusView = mUsernameView;
             cancel = true;
@@ -162,7 +164,7 @@ public class LoginActivity extends Activity {
             showProgress(true);
             mCheckUserButton.setVisibility(View.GONE);
             mEmailSignInButton.setVisibility(View.VISIBLE);
-            mAuthTaskFirst = new UserLoginTaskFirst(username);
+            mAuthTaskFirst = new UserLoginTaskFirst(enteredUsername);
             mAuthTaskFirst.execute((Void) null);
         }
     }
@@ -174,7 +176,6 @@ public class LoginActivity extends Activity {
         }
 
         // Store values at the time of the login attempt.
-        String username = mUsernameView.getText().toString();
         String pin = mPinView.getText().toString();
 
         boolean cancel = false;
@@ -194,7 +195,7 @@ public class LoginActivity extends Activity {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTaskSecond = new UserLoginTaskSecond(username, pin);
+            mAuthTaskSecond = new UserLoginTaskSecond(enteredUsername, pin);
             mAuthTaskSecond.execute((Void) null);
         }
     }
@@ -267,6 +268,7 @@ public class LoginActivity extends Activity {
                         txtHello.setText(getString(R.string.hello) + " " + session.getUser().getName());
                         differentAccount.setVisibility(View.VISIBLE);
                         noAccount.setVisibility(View.GONE);
+                        mPinView.requestFocus();
                     }
 
                 }

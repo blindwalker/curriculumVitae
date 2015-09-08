@@ -70,5 +70,8 @@
     <string name="ar_hint">Please scan the image attached in your E-Mail.</string>
     <string name="error_field_required">Please enter your Username</string>
     <string name="Logout">Logout</string>
+    <string name="github">GitHub</string>
+    <string name="about_content6">This app and the corresponding server are both available on GitHub.</string>
+    <string name="about_contentLink"><u>https://github.com/blindwalker/curriculumVitae</u></string>
 
 </resources>

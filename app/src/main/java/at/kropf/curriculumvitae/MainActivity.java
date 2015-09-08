@@ -138,6 +138,9 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.linkedIn:
                                 linkedIn();
                                 break;
+                            case R.id.github:
+                                github();
+                                break;
                         }
                     }
                 }).show();
@@ -152,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*
         imgMe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -168,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        */
     }
 
     /*
@@ -253,6 +258,13 @@ public class MainActivity extends AppCompatActivity {
             intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.linkedin.com/profile/view?id=AAMAABjjhdYBxFepxIjsYPBTDoeiSYRQ6HoLvEA"));
         }
         startActivity(intent);
+    }
+
+    //start intent with github url
+    private void github() {
+        Intent i = new Intent(Intent.ACTION_VIEW,
+                Uri.parse("https://github.com/blindwalker/"));
+        startActivity(i);
     }
 
 
