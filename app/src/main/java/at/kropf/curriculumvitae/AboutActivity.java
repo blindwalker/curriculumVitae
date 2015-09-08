@@ -5,10 +5,6 @@ import android.os.Bundle;
 import com.github.paolorotolo.appintro.AppIntro;
 
 import at.kropf.curriculumvitae.fragment.AboutFragment;
-import at.kropf.curriculumvitae.fragment.About2Fragment;
-import at.kropf.curriculumvitae.fragment.About3Fragment;
-import at.kropf.curriculumvitae.fragment.About4Fragment;
-import at.kropf.curriculumvitae.fragment.About6Fragment;
 
 /*
  * Activity for displaying the viewpager holding the AboutFragments
@@ -27,7 +23,7 @@ public class AboutActivity extends AppIntro {
         addSlide(AboutFragment.newInstance(1));
         addSlide(AboutFragment.newInstance(2));
         addSlide(AboutFragment.newInstance(3));
-        //addSlide(new About5Fragment());
+        //addSlide(AboutFragment.newInstance(5));
         addSlide(AboutFragment.newInstance(4));
         addSlide(AboutFragment.newInstance(6));
 
